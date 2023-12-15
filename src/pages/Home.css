@@ -1,0 +1,29 @@
+ 
+#chambre_rep{
+    background-image: url('/chambre_rep.png');
+
+}
+#chambre_cons{
+    background-image: url('/chambre_cons.png');
+}
+ 
+#chambre_rep ,#chambre_cons {
+    background-size: cover;
+    background-position: center;
+}
+
+
+ #home .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: transform 0.3s;
+  }
+
+
+ #home .card:hover {
+    transform: scale(1.05); 
+  }
+
+
+  
+
+

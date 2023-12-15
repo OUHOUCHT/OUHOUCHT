@@ -1,0 +1,16 @@
+
+.pagination {
+  display: flex;
+  flex: row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.pagination li {
+    display: inline-block;
+    margin: 5px; /* Adjust the right margin as needed */
+
+  }
+  
+

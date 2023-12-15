@@ -1,0 +1,47 @@
+ #ArticleList .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: transform 0.3s;
+    width: 80% !important;
+ }
+
+ #ArticleList .card:hover {
+    transform: scale(1.05); 
+  }
+
+#ArticleList .card-body {
+    background: white url('/pattern--type-1.svg') repeat center center;
+    background-size: contain;
+    }
+
+#ArticleList .highlighted-search-term {
+      background-color: yellow;
+    }
+
+#ArticleList .loading-spinner-container {
+  height: 280px; 
+}
+
+#ArticleList .image-not-loaded {
+  visibility: hidden;
+  height: 0;
+}
+
+#ArticleList .image-loaded {
+  visibility: visible;
+  height: 280px; 
+
+}
+
+ .modal-not-loaded {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+ .modal-loaded {
+  visibility: visible;
+  height: 160px; 
+  max-width: 40%;
+  max-height: 40vh;
+}
+

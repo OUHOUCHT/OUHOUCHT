@@ -1,0 +1,109 @@
+.App {
+   font-family: 'Noto Kufi Arabic', sans-serif;
+   direction: rtl;
+}
+
+.container-content {
+    margin-top: 100px;
+    padding-inline: 2.5rem;
+    padding-bottom:  5rem;
+    padding-top: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .container-content::before,
+  .container-content::after {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    opacity: .035;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+  
+  .container-content::before {
+    background-image: url('/arabesco--type-1.svg');
+    background-position: top right;
+    top: 0;
+    right: 0;
+  }
+  
+  .container-content::after {
+    background-image: url('/arabesco--type-2.svg');
+    background-position: bottom left;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .breadcrumb-item+.breadcrumb-item::after {
+    float: right;
+    padding-right: var(--bs-breadcrumb-item-padding-x);
+    padding-left: var(--bs-breadcrumb-item-padding-x);
+    color: var(--bs-breadcrumb-divider-color);
+    content: var(--bs-breadcrumb-divider, "/");
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  content: none;
+}
+
+#ArticleList .card-title{
+font-size: 15px;
+text-align: center;
+line-height: 1.5;
+}
+
+ .card-title-modal {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
+
+}
+
+
+/* className="font-size-device" */
+/* Media query for mobile screens */
+@media (max-width: 769px) {
+
+ 
+  .title-size-device  h2  {
+    font-size: 18px;
+  }
+  .pub-size-device .card-title {
+    font-size: 15px;
+  }
+
+  .form-label ,.form-control   ,.breadcrumb-item  ,#ArticleList .card-title,.card-title-modal{
+    font-size: 13px;
+  }
+
+  #ArticleList p ,.btn , .msg-loading{
+    font-size: 12px;
+  }
+
+  footer ul li a{
+    font-size: 13px;
+  }
+
+  footer .copyright-screen-device{
+    font-size: 14px;
+  }
+
+  footer .title  {
+    font-size: 15px;
+  }
+
+  #navbar-custom .nav-link{
+    font-size: 13.5px;
+  }
+
+  #navbar-custom .dropdown-item {
+    font-size: 12.5px;
+  }
+
+}
+
+
+  

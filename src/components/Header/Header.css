@@ -1,0 +1,138 @@
+/* Header.css */
+
+#navbar-custom {
+    background: rgb(255, 255, 255) url('/pattern--type-1.svg') repeat center center;
+    background-size: contain;
+
+  }
+
+  #navbar-custom .site-logo {
+    animation: bounceIn 1s ease-out; /* Example animation for the logo */
+    display: flex;
+    align-items: center;
+  }
+  
+
+  #navbar-custom  .nav-link  {
+    animation: fadeInUp 0.5s ease-out;
+  }
+
+  #navbar-custom .nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333; /* Adjust color as needed */
+    margin-right: 13px; /* Adjust margin as needed */
+  }
+  #navbar-custom #nav-custom{
+   margin-right: 30px;
+ }
+
+
+ #navbar-custom #nav-streaming  svg{
+  animation: blink 1.5s infinite; /* Adjust the animation duration as needed */
+}
+
+#navbar-custom #nav-streaming  .nav-link {
+  color: black;
+  font-size: 14px;
+  cursor: pointer;
+
+}
+
+#navbar-custom #nav-streaming  .nav-link:hover {
+  color : red;
+}
+
+
+#navbar-custom .dropdown-menu.show {
+  display: block;
+  text-align: right;
+  background-color: #f8f9fa;
+}
+
+#navbar-custom .dropdown-toggle::after {
+  margin-right: 10px;
+}
+
+#navbar-custom .dropdown-item {
+  font-size: 13.5px;
+}
+
+
+/* Media query for mobile screens */
+@media (max-width: 769px) {
+
+  #navbar-custom .nav-link {
+    margin-right: 0; /* Remove the right margin on mobile screens */
+  }
+  #navbar-custom #nav-custom {
+    margin-right: 0;
+  }
+}
+
+/** keyframes */
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes bounceIn {
+    from, 20%, 40%, 60%, 80%, to {
+      animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+      opacity: 1;
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  
+
+
+

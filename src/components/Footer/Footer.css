@@ -1,0 +1,18 @@
+/* Footer.css */
+
+footer ul li a {
+  color: black;
+  font-size: 15px;
+  text-decoration : none;
+}
+
+footer ul li a:hover{
+  color : gray;
+}
+
+footer .title{
+  color : #DEB870;
+  margin-bottom:  -15px;
+  padding-top: 10px;
+}
+  
