@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container ,NavDropdown } from 'react-bootstrap';
-import logo from '/parlement.png'
+import logo from '/logo--4.png'
 import { IoMdPhotos } from "react-icons/io";
 import { FaBookOpen } from "react-icons/fa";
 import { BiSolidVideos } from "react-icons/bi";
@@ -11,6 +11,7 @@ import { GiBookshelf } from "react-icons/gi";
 import { Tb360View } from "react-icons/tb";
 import './Header.css'
 import { useState } from 'react';
+import { SiReadthedocs } from "react-icons/si";
 
 const Header = () => {
 
@@ -47,7 +48,7 @@ const Header = () => {
           */
         }
 
-          <NavDropdown title={<span><IoHomeSharp size={25} /> &nbsp;الرئيسية</span>}  id="collasible-nav-dropdown"   >
+          <NavDropdown title={<span><IoHomeSharp size={20} /> &nbsp;الرئيسية</span>}  id="collasible-nav-dropdown"   >
               <NavDropdown.Item href="#" onClick={handleNavItemClick} >
                 <MdInfoOutline size={20} />&nbsp;&nbsp;نبذة عن البرلمان
               </NavDropdown.Item>
@@ -61,13 +62,15 @@ const Header = () => {
             </NavDropdown>
             
             <Nav.Link as={Link} to="/album" className="nav-link "  onClick={handleNavItemClick}>
-            <IoMdPhotos className="mr-1" size={25} />&nbsp;&nbsp;مكتبة الصور
+            <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;مكتبة الصور
           </Nav.Link>
-          <Nav.Link as={Link} to="/videos" className="nav-link " onClick={handleNavItemClick}>
-            <BiSolidVideos className="mr-1"  size={25} />&nbsp;&nbsp;مكتبة الوثائق
+
+          <Nav.Link as={Link} to="/docs" className="nav-link " onClick={handleNavItemClick}>
+            <SiReadthedocs className="mr-1"  size={20} />&nbsp;&nbsp;مكتبة الوثائق
           </Nav.Link>
+
           <Nav.Link href="#" className="nav-link " onClick={handleNavItemClick}>
-            <FaBookOpen className="mr-1" size={25} />&nbsp;&nbsp; البرنامج
+            <FaBookOpen className="mr-1" size={20} />&nbsp;&nbsp; البرنامج
           </Nav.Link>
         </Nav>
         

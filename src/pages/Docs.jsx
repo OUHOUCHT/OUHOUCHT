@@ -2,7 +2,7 @@ import Breadcrumb_ from "../components/Breadcrumb/Breadcrumb_";
 import TitleSection from "../components/TitleSection/TitleSection";
 
 
-const  Videos = () => {
+const  Docs = () => {
 
     return (
         <div className="container-content">
@@ -13,4 +13,4 @@ const  Videos = () => {
 }
 
 
-export  default Videos;
+export  default Docs;

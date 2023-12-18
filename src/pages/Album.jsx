@@ -6,8 +6,8 @@ const  Album = () => {
 
     return (
         <div className="container-content">
-         <Breadcrumb_  title="مكتبةالصور" />
-        <TitleSection title_ar="مكتبةالصور" title_amz="ⴰⵙⵉⵡⵍⴰⴼ" />
+         <Breadcrumb_  title="مكتبة الصور" />
+        <TitleSection title_ar="مكتبة الصور" title_amz="ⴰⵙⵉⵡⵍⴰⴼ" />
         </div>
     )
 }

@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer.jsx';
 import Container from './components/Container/Container.jsx';
 import Home from './pages/Home.jsx';
 import Album from './pages/Album.jsx';
-import Videos from './pages/Videos.jsx';
+import Docs from './pages/Docs.jsx';
 import NotFound from './pages/NotFound.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
@@ -46,8 +46,8 @@ function App() {
           element: <Container />,
         },
         {
-          path: "/videos",
-          element: <Videos />,
+          path: "/docs",
+          element: <Docs />,
         },
         {
           path : "*",
