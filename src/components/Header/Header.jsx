@@ -64,7 +64,7 @@ const Header = () => {
             <IoMdPhotos className="mr-1" size={25} />&nbsp;&nbsp;مكتبة الصور
           </Nav.Link>
           <Nav.Link as={Link} to="/videos" className="nav-link " onClick={handleNavItemClick}>
-            <BiSolidVideos className="mr-1"  size={25} />&nbsp;&nbsp;مكتبة الفيديوهات
+            <BiSolidVideos className="mr-1"  size={25} />&nbsp;&nbsp;مكتبة الوثائق
           </Nav.Link>
           <Nav.Link href="#" className="nav-link " onClick={handleNavItemClick}>
             <FaBookOpen className="mr-1" size={25} />&nbsp;&nbsp; البرنامج
