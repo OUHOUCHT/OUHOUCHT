@@ -6,8 +6,8 @@ const  Videos = () => {
 
     return (
         <div className="container-content">
-        <Breadcrumb_  title="مكتبة الفيديوهات" />
-        <TitleSection title_ar="مكتبة الفيديوهات" title_amz="ⴰⵙⵉⵡⵍⴰⴼ" />
+        <Breadcrumb_  title="مكتبة الوثائق" />
+        <TitleSection title_ar="مكتبة الوثائق" title_amz="ⴰⵙⵉⵡⵍⴰⴼ" />
         </div>
     )
 }
