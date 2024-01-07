@@ -2,7 +2,8 @@
 
 footer ul li a {
   color: black;
-  font-size: 15px;
+  
+  font-size: 13px;
   text-decoration : none;
 }
 
@@ -11,8 +12,31 @@ footer ul li a:hover{
 }
 
 footer .title{
-  color : #DEB870;
+ /* color : #DEB870; */
   margin-bottom:  -15px;
   padding-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: gray;
+
 }
-  
+
+
+.copyright-screen-device {
+  font-size: 13px; 
+  font-weight: bold;
+  color: gray;
+
+}
+
+footer .site-footer__copyright::before {
+  content: "";
+  height: 1px;
+ /* background-color: #DEB870; */
+ background-color: grey;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 15px;
+
+}
+

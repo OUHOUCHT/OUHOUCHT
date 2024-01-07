@@ -9,6 +9,7 @@ import Docs from './pages/Docs.jsx';
 import NotFound from './pages/NotFound.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import Template from './pages/Template.jsx';
 
 
 function App() {
@@ -58,6 +59,11 @@ function App() {
       ,
       
     },
+
+    {
+      path :"/home",
+      element : <Template/>
+    } ,
   
   ],
   { basename: '/reactApp' } // Specify the base path here

@@ -1,4 +1,6 @@
- 
+ #home {
+    height: 55vh;
+ }
 #chambre_rep{
     background-image: url('/chambre_rep.png');
 

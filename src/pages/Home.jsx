@@ -20,10 +20,10 @@ const Home = () => {
   );
 
   return (
-    <div className="container-content" id="home" >
+    <div className="container-content" id="home"  >
       <div className="title-size-device text-center animate__animated animate__fadeIn pb-5 py-4" >
         <h2 > إصدارات البرلمان</h2>
-        <h2> ⵜⵉⵥⵕⵉⴳⵉⵏ ⵏ ⵓⴱⵕⵍⴰⵎⴰⵏ</h2>
+        <h4> ⵜⵉⵥⵕⵉⴳⵉⵏ ⵏ ⵓⴱⵕⵍⴰⵎⴰⵏ</h4>
       </div>
 
       <Container className=''>

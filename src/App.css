@@ -50,7 +50,7 @@
 }
 
 #ArticleList .card-title{
-font-size: 15px;
+font-size: 14px;
 text-align: center;
 line-height: 1.5;
 }
@@ -60,6 +60,10 @@ line-height: 1.5;
   text-align: center;
   margin-top: 15px;
 
+}
+
+.btn {
+  font-size: 13px;
 }
 
 
@@ -79,20 +83,22 @@ line-height: 1.5;
     font-size: 13px;
   }
 
+
+
   #ArticleList p ,.btn , .msg-loading{
     font-size: 12px;
   }
 
   footer ul li a{
-    font-size: 13px;
+    font-size: 12.5px;
   }
 
   footer .copyright-screen-device{
-    font-size: 14px;
+    font-size: 12px;
   }
 
   footer .title  {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   #navbar-custom .nav-link{

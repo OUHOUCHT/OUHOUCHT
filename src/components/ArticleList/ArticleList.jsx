@@ -5,6 +5,7 @@ import { FaQrcode ,FaInfoCircle } from "react-icons/fa";
 import { useState } from 'react';
 import './ArticleList.css'
 import LoadingBar  from '../LoadingBar.jsx'
+import Image from 'react-bootstrap/Image';
 
 const ArticleList = ({ articles ,searchTerm  ,loading}) => {
 
@@ -75,7 +76,7 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
       </Row>
      : 
      <div className='container'>
-      <Row xs={1}  sm={2} md={3} lg={4} className="g-4" >
+      <Row xs={1}  sm={2} md={3} lg={3} className="g-4" >
       {articles.map((article) => (
         <Col key={article.id}   className='d-flex justify-content-center' >
           <Card   className="card animate__animated animate__zoomIn">
@@ -115,6 +116,16 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
                     </Button>
                 
                </div>
+
+
+ {/**
+  *                <div className='image-container'>
+                <div class="text">
+
+</div>
+</div>
+  */}
+
             </Card.Body>
           </Card>
         </Col>

@@ -11,9 +11,9 @@ const Footer = () => {
         <div className="row">
           <UsefulLinks />
           <SocialMediaLinks/>
-          <AboutUsLinks />
+         <AboutUsLinks /> 
         </div>
-        <div className="row mt-5">
+        <div className="row mt-5  site-footer__copyright">
           <CopyrightNotice />
         </div>
 

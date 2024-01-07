@@ -1,0 +1,161 @@
+/* Template.css */
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+
+/*
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+*/
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Reem Kufi', sans-serif;
+  background-color:#E3D273 ;
+
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.first-row {
+  height: 65vh;
+}
+
+.background-image {
+  width: 100%;
+  height: 65vh;
+}
+
+.second-row {
+  height: 35vh;
+}
+
+
+.full-height-table {
+  flex: 1;
+  background-color: #E3D273;
+}
+
+
+
+.centered-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.second-row  .table {
+  --bs-table-bg: #E3D273;
+}
+
+/*
+.table {
+  --bs-table-bg: #E3D273;
+  --bs-table-border-color: yellow;
+  border-style: hidden;
+}
+*/
+
+.second-row .table td  {
+  border: none;
+  color: #254E11;
+  font-size: 1.3rem;
+
+}
+
+
+.second-row  .table td h2{
+  font-size: 1.6rem;
+  padding: 15px 0;
+}
+
+
+.second-row  .button-border-medias h3 {
+  font-size: 1.4rem;
+  padding: 8px 30px;
+
+}
+
+.button-border-2 {
+  border: 1.5px solid #B92D21;
+  background: linear-gradient(180deg, rgba(255,240,241,0.2805497198879552) 0%, rgba(255,247,248,0) 60%, rgba(142,45,62,1) 100%);
+}
+
+.button-border-medias:hover, .button-border-2:hover {
+  transform: scale(1.05); 
+}
+
+.icon-butt , .icon-butt_modal {
+  width: 15px;
+  color: #BA2E20 ;
+}
+.icon-butt {
+  margin: 2px 0px 0 10px;
+}
+.icon-butt_modal {
+  width: 15px;
+  color: #BA2E20 ;
+}
+
+
+
+
+.second-row a{
+  text-decoration:none;
+  transition:all 500ms ease;
+  -moz-transition:all 500ms ease;
+  -webkit-transition:all 500ms ease;
+  -ms-transition:all 500ms ease;
+  -o-transition:all 500ms ease;
+  color: #254E11;
+}
+
+.second-row a:hover{
+  text-decoration:none;
+  outline:none;
+}
+
+
+
+/* MediaRowImages.css */
+
+.modal-medias .col {
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-medias .col.hovered {
+  transform: scale(1.2);
+  cursor: pointer ;
+}
+
+.modal-medias .image {
+  width: 5rem;
+  transition: width 0.3s ease-in-out;
+}
+
+.modal-medias .col.hovered .image {
+  width: 10rem;
+}
+
+/* MediaModal.css */
+
+.note {
+  font-size: 16px;
+  color: #BA2E20; /* Adjust the color as needed */
+}
+
+.modal-medias .modal-footer {
+  border-top: none;
+}
+
+/* MediaSection.css */
+
+.enlarge-on-hover {
+  transition: transform 0.3s ease; /* Add smooth transition effect */
+  cursor: pointer;
+}
+
+.enlarge-on-hover:hover {
+  transform: scale(1.2); /* Adjust the scale factor as needed */
+}

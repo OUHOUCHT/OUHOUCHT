@@ -50,30 +50,38 @@ const Header = () => {
 
           <NavDropdown title={<span><IoHomeSharp size={20} /> &nbsp;الرئيسية</span>}  id="collasible-nav-dropdown"   >
               <NavDropdown.Item href="#" onClick={handleNavItemClick} >
-                <MdInfoOutline size={20} />&nbsp;&nbsp;نبذة عن البرلمان
+                <MdInfoOutline size={20} />&nbsp;&nbsp;البرلمان في سطور
               </NavDropdown.Item>
               <NavDropdown.Item   as={Link} to="/"  onClick={handleNavItemClick} >              
                   <GiBookshelf  size={20} />&nbsp;&nbsp;إصدارات البرلمان
               </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#" onClick={handleNavItemClick}>
-                 <Tb360View   size={20} />&nbsp;&nbsp;زيارة البرلمان
-              </NavDropdown.Item>
-            </NavDropdown>
-            
+           
+              {/**
+               *                <NavDropdown.Divider />
+                            <NavDropdown.Item href="#" onClick={handleNavItemClick}>
+                              <Tb360View   size={20} />&nbsp;&nbsp;زيارة البرلمان
+                            </NavDropdown.Item>
+                          </NavDropdown> 
+              */}
+            </NavDropdown> 
             <Nav.Link as={Link} to="/album" className="nav-link "  onClick={handleNavItemClick}>
-            <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;مكتبة الصور
+            <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;معرض الصور
           </Nav.Link>
 
           <Nav.Link as={Link} to="/docs" className="nav-link " onClick={handleNavItemClick}>
-            <SiReadthedocs className="mr-1"  size={20} />&nbsp;&nbsp;مكتبة الوثائق
+            <SiReadthedocs className="mr-1"  size={20} />&nbsp;&nbsp;معرض الوثائق
           </Nav.Link>
+
+          <Nav.Link as={Link} to="/docs" className="nav-link " onClick={handleNavItemClick}>
+            <BiSolidVideos className="mr-1"  size={20} />&nbsp;&nbsp;الفيديو 
+          </Nav.Link>
+
 
           <Nav.Link href="#" className="nav-link " onClick={handleNavItemClick}>
             <FaBookOpen className="mr-1" size={20} />&nbsp;&nbsp; البرنامج
           </Nav.Link>
         </Nav>
-        
+
         <Nav className="me-auto" id="nav-streaming" onClick={handleNavItemClick}  >
           <Nav.Link href="#" className="nav-link ">
             <CgMediaLive className="mr-1 " size={25} />&nbsp; النقل المباشر

@@ -1,7 +1,7 @@
  #ArticleList .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition: transform 0.3s;
-    width: 80% !important;
+    width: 70% !important;
  }
 
  #ArticleList .card:hover {
@@ -28,7 +28,7 @@
 
 #ArticleList .image-loaded {
   visibility: visible;
-  height: 280px; 
+  height: 240px; 
 
 }
 
@@ -44,4 +44,55 @@
   max-width: 40%;
   max-height: 40vh;
 }
+
+
+
+#ArticleList .card-body {
+  position: relative;
+}
+
+
+#ArticleList .image-container img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+#ArticleList .image-container {
+
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+  background: #DEB870 ;
+
+
+}
+
+
+
+#ArticleList .card-body:hover .image-container {
+  width: 100%;
+  left: 0;
+}
+
+#ArticleList .text {
+  color: white;
+  text-wrap: wrap;
+  text-align: center;
+  font-size: 14px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+
+
 

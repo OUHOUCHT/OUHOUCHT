@@ -15,7 +15,7 @@ const Container = () => {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(16);
+  const [articlesPerPage] = useState(18);
   const [searchTerm, setSearchTerm] = useState(''); // Add state for search term
   const [filteredArticles, setFilteredArticles] = useState([]); // New state for filtered articles
 
