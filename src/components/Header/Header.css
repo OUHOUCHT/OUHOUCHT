@@ -3,7 +3,7 @@
 #navbar-custom {
     background: rgb(255, 255, 255) url('/pattern--type-1.svg') repeat center center;
     background-size: contain;
-
+    z-index: 1;
   }
 
   #navbar-custom .site-logo {
@@ -21,7 +21,9 @@
     font-size: 14px;
     font-weight: 500;
     color: #333; /* Adjust color as needed */
-    margin-right: 2px; /* Adjust margin as needed */
+    margin-right: 5px; /* Adjust margin as needed */
+    display: flex;
+    align-items: flex-start;
   }
   #navbar-custom #nav-custom{
    margin-right: 30px;
@@ -51,7 +53,9 @@
 }
 
 #navbar-custom .dropdown-toggle::after {
-  margin-right: 10px;
+  margin-right: 10px; margin-top: 8px;
+
+
 }
 
 #navbar-custom .dropdown-item {

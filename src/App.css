@@ -1,6 +1,8 @@
 .App {
    font-family: 'Noto Kufi Arabic', sans-serif;
    direction: rtl;
+   text-align: right;
+
 }
 
 .container-content {
@@ -10,6 +12,8 @@
     padding-top: 2rem;
     position: relative;
     overflow: hidden;
+    text-align: right;
+
   }
   
   .container-content::before,
@@ -49,7 +53,7 @@
   content: none;
 }
 
-#ArticleList .card-title{
+#ArticleList .card-title  , #ListItems .card-title{
 font-size: 14px;
 text-align: center;
 line-height: 1.5;
@@ -79,13 +83,13 @@ line-height: 1.5;
     font-size: 15px;
   }
 
-  .form-label ,.form-control   ,.breadcrumb-item  ,#ArticleList .card-title,.card-title-modal{
+  .form-label ,.form-control   ,.breadcrumb-item  ,#ArticleList .card-title,#ListItems .card-title ,.card-title-modal{
     font-size: 13px;
   }
 
 
 
-  #ArticleList p ,.btn , .msg-loading{
+  #ArticleList p , #ListItems p,.btn , .msg-loading{
     font-size: 12px;
   }
 
@@ -111,5 +115,16 @@ line-height: 1.5;
 
 }
 
+.pulse {
+  animation: pulse 1s infinite alternate; /* Apply pulse animation */
+}
 
-  
+@keyframes pulse {
+  from {
+      transform: scale(1); /* Initial size */
+  }
+  to {
+      transform: scale(1.2); /* Scale up */
+  }
+}
+

@@ -6,7 +6,7 @@ import SocialMediaLinks from '..//SocialMediaLinks';
 import CopyrightNotice from '../CopyrightNotice';
 const Footer = () => {
   return (
-    <footer className="container-fluid bg-light text-dark px-5 pt-4 p-3" >
+    <footer className="container-fluid bg-light text-dark px-5 pt-5 p-3" >
       <div className=" text-right">
         <div className="row">
           <UsefulLinks />

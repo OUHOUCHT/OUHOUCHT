@@ -1,5 +1,6 @@
- #home {
+#home {
     height: 55vh;
+    /**     margin-bottom: 10vh;  **/
  }
 #chambre_rep{
     background-image: url('/chambre_rep.png');
@@ -25,7 +26,13 @@
     transform: scale(1.05); 
   }
 
+  
+  /*
+  #home .pub-title  {
+     margin-top: 80px;
+    margin-bottom: 50px; 
+  }
+  */
+
 
   
-
-

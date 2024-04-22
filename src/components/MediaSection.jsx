@@ -5,8 +5,8 @@ const MediaSection = ({ handleShowModal }) => (
   <td rowSpan={3} className="centered-cell">
     <div style={{ height: '90%' }} className='animate__animated animate__fadeIn'>
       <div>
-        <img style={{ width: '10rem' }} className="enlarge-on-hover"  src="/qr-app.png" alt="" />
-        <h3 className='title'>البرنامج </h3>
+        <img style={{ width: '18rem' }} className="enlarge-on-hover"  src="/qr-app.png" alt="" />
+        <h3 className='title' >البرنامج </h3>
       </div>
 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

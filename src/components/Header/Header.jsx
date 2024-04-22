@@ -12,6 +12,7 @@ import { Tb360View } from "react-icons/tb";
 import './Header.css'
 import { useState } from 'react';
 import { SiReadthedocs } from "react-icons/si";
+import { FaInfo } from "react-icons/fa";
 
 const Header = () => {
 
@@ -22,7 +23,6 @@ const Header = () => {
     // Collapse the Navbar after clicking on an item
     setExpanded(false);
   };
-
 
 
   return (
@@ -49,9 +49,7 @@ const Header = () => {
         }
 
           <NavDropdown title={<span><IoHomeSharp size={20} /> &nbsp;الرئيسية</span>}  id="collasible-nav-dropdown"   >
-              <NavDropdown.Item href="#" onClick={handleNavItemClick} >
-                <MdInfoOutline size={20} />&nbsp;&nbsp;البرلمان في سطور
-              </NavDropdown.Item>
+
               <NavDropdown.Item   as={Link} to="/"  onClick={handleNavItemClick} >              
                   <GiBookshelf  size={20} />&nbsp;&nbsp;إصدارات البرلمان
               </NavDropdown.Item>
@@ -72,22 +70,29 @@ const Header = () => {
             <SiReadthedocs className="mr-1"  size={20} />&nbsp;&nbsp;معرض الوثائق
           </Nav.Link>
 
-          <Nav.Link as={Link} to="/docs" className="nav-link " onClick={handleNavItemClick}>
-            <BiSolidVideos className="mr-1"  size={20} />&nbsp;&nbsp;الفيديو 
+          <Nav.Link as={Link} to="/feedBack" className="nav-link " onClick={handleNavItemClick}>
+            <FaInfo className="mr-1"  size={20} />&nbsp;&nbsp;أخبرنا برأيك ؟  
           </Nav.Link>
 
+ 
+              {
+                /*
 
           <Nav.Link href="#" className="nav-link " onClick={handleNavItemClick}>
             <FaBookOpen className="mr-1" size={20} />&nbsp;&nbsp; البرنامج
           </Nav.Link>
-        </Nav>
-
+                */
+              }
+          </Nav>
+          {
+                /*
         <Nav className="me-auto" id="nav-streaming" onClick={handleNavItemClick}  >
           <Nav.Link href="#" className="nav-link ">
             <CgMediaLive className="mr-1 " size={25} />&nbsp; النقل المباشر
           </Nav.Link>
         </Nav>
-
+                */
+      }
       </Navbar.Collapse>
     
     </Container>

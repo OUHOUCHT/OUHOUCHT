@@ -19,24 +19,23 @@
 }
 
 .first-row {
-  height: 65vh;
+  height: 60vh;
 }
 
 .background-image {
   width: 100%;
-  height: 65vh;
+  height: 60vh;
 }
 
 .second-row {
-  height: 35vh;
+  padding-top: 60px;  /*  add space between first-row and second-row*/
+  height: 40vh;
 }
 
-
-.full-height-table {
-  flex: 1;
-  background-color: #E3D273;
+.second-row  .table {
+  --bs-table-bg: #E3D273;
+  height: 70%;
 }
-
 
 
 .centered-cell {
@@ -45,35 +44,24 @@
 }
 
 
-.second-row  .table {
-  --bs-table-bg: #E3D273;
-}
-
-/*
-.table {
-  --bs-table-bg: #E3D273;
-  --bs-table-border-color: yellow;
-  border-style: hidden;
-}
-*/
 
 .second-row .table td  {
   border: none;
   color: #254E11;
-  font-size: 1.3rem;
+  padding: 20px;
 
 }
 
 
 .second-row  .table td h2{
-  font-size: 1.6rem;
-  padding: 15px 0;
+  font-size: 1.8rem;
+  padding: 18px 0;
 }
 
 
 .second-row  .button-border-medias h3 {
-  font-size: 1.4rem;
-  padding: 8px 30px;
+  font-size: 1.6rem;
+  padding: 10px 30px;
 
 }
 
@@ -140,13 +128,9 @@
 
 /* MediaModal.css */
 
-.note {
-  font-size: 16px;
-  color: #BA2E20; /* Adjust the color as needed */
-}
-
-.modal-medias .modal-footer {
-  border-top: none;
+.modal-medias .col a {
+  text-decoration: none;
+  color: #BA2E20;
 }
 
 /* MediaSection.css */

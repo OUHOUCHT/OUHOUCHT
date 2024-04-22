@@ -6,6 +6,7 @@ import { useState } from 'react';
 import './ArticleList.css'
 import LoadingBar  from '../LoadingBar.jsx'
 import Image from 'react-bootstrap/Image';
+import ReactGA from 'react-ga4';
 
 const ArticleList = ({ articles ,searchTerm  ,loading}) => {
 
@@ -21,6 +22,13 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
 
 
   const toggleModal = (article) => {
+    
+    ReactGA.event({
+      category: 'QR-CODE GA',
+      action: 'QR-CODE SCAN',
+      label: "QR-CODE LABEL",
+  });
+
     setSelectedArticle(article);
     setModalImageLoaded(false); // Reset modal image loading state
 
@@ -57,6 +65,20 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
     return title;
   };
   
+
+
+ 
+//  to send data anayltics to google analytic
+  const handleClick = () => {
+    ReactGA.event({
+        category: 'FILE-DOWNLOAD QA',
+        action: 'FILE-DOWNLOAD',
+        label: "FILE-DOWNLOAD LABEL",
+    });
+};
+
+
+
 
   if (loading) {
     return  <LoadingBar />
@@ -104,7 +126,7 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
 
               <div  className='d-flex flex-row justify-content-center'>
                 {/*   href={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(article.url)}`} */}
-                <Button  size='sm'  rel="noopener noreferrer" className="animate__animated animate__heartBeat mx-1"  variant="primary" href={article.pdf_link} target='_blank'>
+                <Button onClick={() => handleClick()}  size='sm'  rel="noopener noreferrer" className="animate__animated animate__heartBeat mx-1"  variant="primary" href={article.pdf_link} target='_blank'>
                     <IoMdDownload size={18} /></Button>
                  <Button
                       size='sm'

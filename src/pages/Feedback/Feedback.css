@@ -1,0 +1,64 @@
+.feedback-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.form-group label {
+  font-weight: bold;
+}
+
+.awesome-button {
+  width: 40%;
+  background-color: gray;
+  border-color: gray;
+  color: #fff;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.awesome-button:hover {
+  background-color: #E4AA3A;
+  border-color: #F7F7F7;
+  color: white;
+}
+
+.animate__heartBeat {
+  animation-name: heartBeat;
+}
+
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.text-danger{
+  font-size: 15px;
+}

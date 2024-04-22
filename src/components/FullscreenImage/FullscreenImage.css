@@ -1,0 +1,44 @@
+.fullscreen-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.fullscreen-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.9);
+}
+
+.fullscreen-image-content {
+    position: relative;
+}
+
+.fullscreen-image-content img {
+    width:  700px;
+    height: 600px;
+}
+
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+

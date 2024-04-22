@@ -8,8 +8,15 @@ const AboutUsLinks = () => {
       <div className="row">
         <div className="col-md-12  ">
         <MediaLinksList>
-                <MediaLink  link="https://www.parlement.ma/" text="المكتبة" />
-                <MediaLink  link="https://www.chambredesrepresentants.ma/ar" text="الأرشيف"    />
+                <MediaLink  link="https://bibliotheque.parlement.ma/" text="المكتبة" />
+                <MediaLink  link="http://portail.parlement.intra:9080/navigator/?desktop=exposition" text="الأرشيف الإلكتروني"    />
+                {
+                  /**
+                   * <MediaLink  link="/parlement/termsOfService" text="شروط الخدمة"    />
+                   * <MediaLink  link="/parlement/privacyPolicy" text="سياسة الخصوصية"    />
+                   */
+                }
+
         </MediaLinksList>
         </div>
       </div>

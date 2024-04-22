@@ -6,6 +6,11 @@ import Pagination from '../Pagination/Pagination';
 import SearchForm from '../SearchForm/SearchForm';
 import Breadcrumb_ from '../Breadcrumb/Breadcrumb_';
 import TitleSection from '../TitleSection/TitleSection';
+import ReactGA from 'react-ga4';
+import { BsArrowReturnLeft } from "react-icons/bs";
+import { BsArrowReturnRight } from "react-icons/bs";
+
+
 import './Container.css'
 
 const Container = () => {
@@ -24,9 +29,12 @@ const Container = () => {
   const navigate = useNavigate();
   
 
+  useEffect(() => {
+    // Send a pageview event to Google Analytics when the component mounts
+    ReactGA.send({ hitType: 'pageview', page: window.location.pathname ,title : title});
+  }, []);
 
-  console.log("reload")
-  
+
  
   useEffect(() => {
       if (!["إصدارات مجلس النواب","إصدارات مجلس المستشارين"].includes(title)) {
@@ -101,7 +109,7 @@ const Container = () => {
     
     <div className='container-content' >
       <Breadcrumb_  title={title} />
-      <TitleSection title_ar="قائمة الإصدارات" title_amz="ⵜⴰⵍⴳⴰⵎⵜ ⵏ ⵜⵥⵕⵉⴳⵉⵏ" />
+      <TitleSection title_ar="قائمة الإصدارات" title_amz="ⵜⴰⵍⴳⴰⵎⵜ ⵏ ⵜⵥⵕⵉⴳⵉⵏ" Icon_2={<BsArrowReturnRight />}  Icon_1={<BsArrowReturnLeft />}/>
       <SearchForm onSearch={handleSearch} />
       <ArticleList loading={loading} articles={currentArticles} searchTerm={searchTerm} />
       <Pagination 
