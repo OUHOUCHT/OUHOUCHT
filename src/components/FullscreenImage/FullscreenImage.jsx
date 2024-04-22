@@ -7,7 +7,7 @@ const FullscreenImage = ({ imageUrl, onClose }) => {
         <div className="fullscreen-image-container">
             <div className="fullscreen-image-overlay" onClick={onClose}>
             <button className="close-button" onClick={onClose}>
-                    <FaTimes size={30} /> إغلاق {/* Close icon */}
+                    <FaTimes size={30} />  {/* إغلاق */}
                 </button>
             </div>
             <div className="fullscreen-image-content">

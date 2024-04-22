@@ -3,11 +3,10 @@ import { MdStarPurple500 } from "react-icons/md";
 import { Form, Row, Col, Button, Container, Modal } from 'react-bootstrap';
 import TitleSection from '../../components/TitleSection/TitleSection';
 import './Feedback.css'; // Import your CSS file for styling
-import { HiSave } from "react-icons/hi";
 import OpinionComponent from '../OpinionComponent/OpinionComponent';
-import { TiInfoLargeOutline } from "react-icons/ti";
-import { TbDatabaseCog } from "react-icons/tb";
-import { TiInfoOutline } from "react-icons/ti";
+import { BiError } from "react-icons/bi";
+import { FaCheck } from "react-icons/fa";
+import { BsSendCheck } from "react-icons/bs";
 
 const Feedback = () => {
   const [formData, setFormData] = useState({
@@ -19,10 +18,18 @@ const Feedback = () => {
   });
 
   const [rating, setRating] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState({
+    open : false,
+    title : "",
+    error :'',
+    operaionStatus : ""
+  });
 
   const handleCloseModal = () => {
-    setShowModal(false);
+    setShowModal( prev =>  ({
+      ...prev,
+      open : false
+    }));
   };
 
   const handleRatingChange = (value) => {
@@ -58,21 +65,64 @@ const Feedback = () => {
     const form = e.currentTarget;
     if (form.checkValidity() && rating !== 0) {
       // Do something with form data, like submit it to a server
-      console.log({...formData, rating : rating ===0 ? 'الإمتناع' : renderTooltip(rating) });
+      const data = {...formData, rating : rating ===0 ? 'الإمتناع' : renderTooltip(rating) }
 
+      const sendFeedBack = async () => {
+        try {
 
-      setShowModal(true);
+        const response = await fetch('https://ebureau.chambredesconseillers.ma/sielcc/api.php?endpoint=sendFeedBack', {
+            method: 'POST', 
+            headers: {
+              'Api-Key': '6c92e935dc096ab028081a1262e927cf3c10f6df8ccf247ba65821ca052a29ab',
+              'Content-Type': 'application/json', 
+            },
+            body: JSON.stringify(data), // Convert data object to JSON string
+          });
 
-      // Reset the form after successful submission
-      form.reset();
-      setFormData({
-        name: '',
-        email: '',
-        phoneNumber: '',
-        listValue: '',
-        textAreaValue: ''
-      });
-      setRating(0);
+          const result = await response.json();
+
+          if (result.error) {
+            setShowModal( () => ({
+              open: true,
+              title :"تعذر إكمال العملية بنجاح",
+              error :  result.error,
+              operaionStatus: 2
+
+            }));
+            return
+          }
+
+          setShowModal( () => ({
+            error : "",
+            open: true,
+            title :"تمت عملية التقييم بنجاح",
+            operaionStatus : 1
+          }));
+
+          // Reset the form after successful submission
+          form.reset();
+          setFormData({
+            name: '',
+            email: '',
+            phoneNumber: '',
+            listValue: '',
+            textAreaValue: ''
+          });
+          setRating(0);
+  
+        } catch (result) {
+          setShowModal( () => ({
+            open: true,
+            title :"تعذر إكمال العملية بنجاح",
+            error :  result.error,
+            operaionStatus: 2
+          }));
+
+        } 
+      };
+
+      sendFeedBack()
+
 
     } else {
       e.stopPropagation(); // Prevent default submission if form is invalid
@@ -81,10 +131,12 @@ const Feedback = () => {
 
   return (
     <Container className="container-content">
-      <TitleSection Icon_1={<MdStarPurple500 />} title_ar="الدفتر الذهبي الإلكتروني" title_amz="ⴰⴷⴼⵔⴽ ⴰⵎⵓⴷⴷⴰⵡⵉ ⵏ ⵜⴰⵢⵏⵏⴰⵏ ⵜⵓⵜⵓⵔⵓⵏⵉ" />
+      <TitleSection Icon_1={<MdStarPurple500  color='#E4AA3A' />} title_ar="الدفتر الذهبي الإلكتروني" title_amz="ⴰⴷⴼⵔⴽ ⴰⵎⵓⴷⴷⴰⵡⵉ ⵏ ⵜⴰⵢⵏⵏⴰⵏ ⵜⵓⵜⵓⵔⵓⵏⵉ" />
       <div className=' mt-4 feedback-container d-flex flex-row justify-content-center align-items-center' >
         <Form onSubmit={handleSubmit}>
-        <OpinionComponent rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
+        <h4 className='text-center'>أخبرنا برأيك ؟</h4>
+        <div className='text-right mt-3'> {rating === 0 && <div  className={`animate__animated animate__heartBeat`}> <Form.Text className="text-danger"> * يرجى إبداء رأيك بتقييم أسفله </Form.Text></div>}</div>
+
           <Form.Group className="my-2" as={Row} controlId="formFirstNameLastName">
             <Form.Label>الاسم والنسب</Form.Label>
             <Col sm={15}>
@@ -94,11 +146,12 @@ const Feedback = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder='ادخل الاسم والنسب '
+                className="custom-placeholder" // Apply custom CSS class
                 required
                 isInvalid={formData.name.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
-              الاسم والنسب مطلوب
+              * الاسم والنسب مطلوب 
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
@@ -111,12 +164,13 @@ const Feedback = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 placeholder='ادخل رقم الهاتف'
+                className="custom-placeholder" // Apply custom CSS class
                 onChange={handleChange}
                 required
                 isInvalid={formData.phoneNumber.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
-                رقم الهاتف مطلوب
+              *  رقم الهاتف مطلوب
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
@@ -125,7 +179,8 @@ const Feedback = () => {
             <Form.Label>البريد الالكتروني</Form.Label>
             <Col sm={15}>
               <Form.Control
-              placeholder='ادخل البريد الالكتروني'
+                placeholder='ادخل البريد الالكتروني'
+                className="custom-placeholder" // Apply custom CSS class
                 type="email"
                 name="email"
                 value={formData.email}
@@ -134,7 +189,7 @@ const Feedback = () => {
                 isInvalid={formData.email.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
-                البريد الالكتروني مطلوب
+              *  البريد الالكتروني مطلوب
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
@@ -147,6 +202,7 @@ const Feedback = () => {
                 name="listValue"
                 value={formData.listValue}
                 onChange={handleChange}
+                className="custom-select" // Apply custom CSS class
                 required
                 isInvalid={formData.listValue.trim() === ''}
               >
@@ -162,7 +218,7 @@ const Feedback = () => {
 
               </Form.Control>
               <Form.Control.Feedback type="invalid">
-                الهيئة مطلوبة
+              * الهيئة مطلوبة 
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
@@ -177,38 +233,36 @@ const Feedback = () => {
                 value={formData.textAreaValue}
                 onChange={handleChange}
                 placeholder='أكتب رأيك هنا'
-                
+                className="custom-placeholder" // Apply custom CSS class
               />
             </Col>
           </Form.Group>
 
           <Form.Group className="my-2 d-flex flex-row justify-content-center align-items-center text-center" controlId="formSubmitButton">
             <Button
-              size="sm"
+              size="lg"
               className="awesome-button"
-              variant="secondary"
               type="submit"
             >
-              <span style={{ fontSize: 15 }}> <HiSave size={22} /> احفظ</span>
+              <span style={{fontSize:16}}> <BsSendCheck size={22} /> إرسال</span>
             </Button>
           </Form.Group>
-          <div className='text-right mt-3'> {rating === 0 && <div  className={`animate__animated animate__heartBeat`}><TiInfoOutline color='red' size={25} /> <Form.Text className="text-danger"> يرجى إبداء رأيك بتقييم أعلاه </Form.Text></div>}</div>
 
         </Form>
 
         {/* Modal for success message */}
-          <Modal  style={{textAlign:'center'}} show={showModal} onHide={handleCloseModal}>
+          <Modal  style={{textAlign:'center'}} show={showModal.open} onHide={handleCloseModal}>
           <Modal.Header closeButton   style={{textAlign:'right'}}  >
           </Modal.Header>
-          <Modal.Body> <TbDatabaseCog  size={30}  className='mb-3' /> <br />  تمت عملية التقييم بنجاح </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              إغلاق
-            </Button>
-          </Modal.Footer>
+          <Modal.Body className='mb-4' style={{color: showModal.operaionStatus !==1 && 'red' , fontSize:20}}> {showModal.operaionStatus === 1 ? <FaCheck  size={40}  className='mb-3' /> : <BiError  size={40}  className='mb-3' />}  <br />  {showModal.title}  <br />  {showModal.error}</Modal.Body>
         </Modal>
 
       </div>
+
+
+      <div className=' mt-4 feedback-container d-flex flex-row justify-content-center align-items-center' >
+      <OpinionComponent rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
+        </div>
     </Container>
   );
 };

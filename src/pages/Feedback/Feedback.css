@@ -7,6 +7,7 @@
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.5s ease;
+  color: gray;
 }
 
 @keyframes fadeIn {
@@ -22,6 +23,11 @@
 .form-group label {
   font-weight: bold;
 }
+
+.custom-placeholder::placeholder , .custom-select {
+  font-size: 14px; /* Adjust the font size as needed */
+}
+
 
 .awesome-button {
   width: 40%;
@@ -61,4 +67,6 @@
 }
 .text-danger{
   font-size: 15px;
+  padding: 1rem;
+  font-weight: bold;
 }

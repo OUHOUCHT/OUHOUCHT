@@ -16,15 +16,19 @@
   .rating-icons span {
     margin: 0 10px;
   }
+  .rating-icons span  svg:hover {
+    color: #E4AA3A;
+  }
   
   .icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
     cursor: pointer;
+    color: gray; /* Change the color of the active icon */
   }
   .rating-response{
-    margin-top: 1rem;
+    text-align: center;
   }
   .active {
-    color: #E4AA3A; /* Change the color of the active icon */
+    color: #E4AA3A;
   }
   
