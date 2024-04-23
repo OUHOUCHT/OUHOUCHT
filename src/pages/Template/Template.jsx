@@ -3,10 +3,10 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MediaModal from '../components/MediaModal/MediaModal';
+import MediaModal from '../../components/MediaModal/MediaModal';
 import left_arrow  from '/left-arrow-svgrepo-com.svg';
-import TableRowItem from '../components/TableRowItem';
-import MediaSection from '../components/MediaSection';
+import TableRowItem from '../../components/TableRowItem';
+import MediaSection from '../../components/MediaSection';
 import './Template.css';
 
 

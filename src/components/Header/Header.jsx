@@ -54,14 +54,13 @@ const Header = () => {
                   <GiBookshelf  size={20} />&nbsp;&nbsp;إصدارات البرلمان
               </NavDropdown.Item>
            
-              {/**
-               *                <NavDropdown.Divider />
-                            <NavDropdown.Item href="#" onClick={handleNavItemClick}>
-                              <Tb360View   size={20} />&nbsp;&nbsp;زيارة البرلمان
-                            </NavDropdown.Item>
-                          </NavDropdown> 
-              */}
             </NavDropdown> 
+
+            <Nav.Link as={Link} to="/photos" className="nav-link "  onClick={handleNavItemClick}>
+            <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;ألبوم الصور
+          </Nav.Link>
+
+
             <Nav.Link as={Link} to="/album" className="nav-link "  onClick={handleNavItemClick}>
             <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;معرض الصور
           </Nav.Link>

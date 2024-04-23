@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MdStarPurple500 } from "react-icons/md";
 import { Form, Row, Col, Button, Container, Modal } from 'react-bootstrap';
 import TitleSection from '../../components/TitleSection/TitleSection';
@@ -7,6 +7,7 @@ import OpinionComponent from '../OpinionComponent/OpinionComponent';
 import { BiError } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { BsSendCheck } from "react-icons/bs";
+import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 
 const Feedback = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,11 @@ const Feedback = () => {
     textAreaValue: ''
   });
 
+  const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
+  const [showRatingError, setShowRatingError] = useState(false);
+  const errorDivRef = useRef(null);
+
   const [showModal, setShowModal] = useState({
     open : false,
     title : "",
@@ -62,72 +67,100 @@ const Feedback = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const form = e.currentTarget;
-    if (form.checkValidity() && rating !== 0) {
-      // Do something with form data, like submit it to a server
-      const data = {...formData, rating : rating ===0 ? 'الإمتناع' : renderTooltip(rating) }
 
-      const sendFeedBack = async () => {
-        try {
+    if (form.checkValidity() ) {
 
-        const response = await fetch('https://ebureau.chambredesconseillers.ma/sielcc/api.php?endpoint=sendFeedBack', {
-            method: 'POST', 
-            headers: {
-              'Api-Key': '6c92e935dc096ab028081a1262e927cf3c10f6df8ccf247ba65821ca052a29ab',
-              'Content-Type': 'application/json', 
-            },
-            body: JSON.stringify(data), // Convert data object to JSON string
-          });
+      if(rating !== 0){
+        // Do something with form data, like submit it to a server
+        const data = {...formData, rating : rating ===0 ? 'الإمتناع' : renderTooltip(rating) }
 
-          const result = await response.json();
+        setLoading(true);
 
-          if (result.error) {
+        const sendFeedBack = async () => {
+          try {
+
+          const response = await fetch('https://ebureau.chambredesconseillers.ma/sielcc/api.php?endpoint=sendFeedBack', {
+              method: 'POST', 
+              headers: {
+                'Api-Key': '6c92e935dc096ab028081a1262e927cf3c10f6df8ccf247ba65821ca052a29ab',
+                'Content-Type': 'application/json', 
+              },
+              body: JSON.stringify(data), // Convert data object to JSON string
+            });
+
+            const result = await response.json();
+            setLoading(false);
+
+            if (result.error) {
+              setShowModal( () => ({
+                open: true,
+                title :"تعذر إكمال العملية ",
+                error :  result.error,
+                operaionStatus: 2
+
+              }));
+              return
+            }
+
+            setShowModal( () => ({
+              error : "",
+              open: true,
+              title :"تمت العملية بنجاح",
+              operaionStatus : 1
+            }));
+
+            // Reset the form after successful submission
+            form.reset();
+            setFormData({
+              name: '',
+              email: '',
+              phoneNumber: '',
+              listValue: '',
+              textAreaValue: ''
+            });
+            setRating(0);
+
+          } catch (result) {
+
+            setLoading(false);
+
             setShowModal( () => ({
               open: true,
-              title :"تعذر إكمال العملية بنجاح",
+              title :"تعذر إكمال العملية ",
               error :  result.error,
               operaionStatus: 2
-
             }));
-            return
-          }
 
-          setShowModal( () => ({
-            error : "",
-            open: true,
-            title :"تمت عملية التقييم بنجاح",
-            operaionStatus : 1
-          }));
+          } 
+        };
 
-          // Reset the form after successful submission
-          form.reset();
-          setFormData({
-            name: '',
-            email: '',
-            phoneNumber: '',
-            listValue: '',
-            textAreaValue: ''
-          });
-          setRating(0);
-  
-        } catch (result) {
-          setShowModal( () => ({
-            open: true,
-            title :"تعذر إكمال العملية بنجاح",
-            error :  result.error,
-            operaionStatus: 2
-          }));
-
-        } 
-      };
-
-      sendFeedBack()
+        sendFeedBack()
+        setShowRatingError(false)
 
 
+      }else{
+
+      setShowRatingError(true);
+
+      }
+      
     } else {
       e.stopPropagation(); // Prevent default submission if form is invalid
+      // Show error message animation when rating is 0
+      setShowRatingError(true);
     }
   };
+
+
+
+  useEffect(() => {
+    if (showRatingError && errorDivRef.current) {
+      errorDivRef.current.focus();
+    }
+  }, [showRatingError]);
+
 
   return (
     <Container className="container-content">
@@ -135,8 +168,9 @@ const Feedback = () => {
       <div className=' mt-4 feedback-container d-flex flex-row justify-content-center align-items-center' >
         <Form onSubmit={handleSubmit}>
         <h4 className='text-center'>أخبرنا برأيك ؟</h4>
-        <div className='text-right mt-3'> {rating === 0 && <div  className={`animate__animated animate__heartBeat`}> <Form.Text className="text-danger"> * يرجى إبداء رأيك بتقييم أسفله </Form.Text></div>}</div>
-
+        <div  className="text-right mt-3">
+            {rating === 0 && <div><Form.Text className="text-danger"> * يرجى إبداء رأيك بخصوص رواق البرلمان  </Form.Text></div>}
+          </div>
           <Form.Group className="my-2" as={Row} controlId="formFirstNameLastName">
             <Form.Label>الاسم والنسب</Form.Label>
             <Col sm={15}>
@@ -243,8 +277,9 @@ const Feedback = () => {
               size="lg"
               className="awesome-button"
               type="submit"
+              variant='secondary'
             >
-              <span style={{fontSize:16}}> <BsSendCheck size={22} /> إرسال</span>
+              <span> <BsSendCheck  /> إرسال</span>
             </Button>
           </Form.Group>
 
@@ -254,15 +289,18 @@ const Feedback = () => {
           <Modal  style={{textAlign:'center'}} show={showModal.open} onHide={handleCloseModal}>
           <Modal.Header closeButton   style={{textAlign:'right'}}  >
           </Modal.Header>
-          <Modal.Body className='mb-4' style={{color: showModal.operaionStatus !==1 && 'red' , fontSize:20}}> {showModal.operaionStatus === 1 ? <FaCheck  size={40}  className='mb-3' /> : <BiError  size={40}  className='mb-3' />}  <br />  {showModal.title}  <br />  {showModal.error}</Modal.Body>
+          <Modal.Body className='mb-2' style={{color: showModal.operaionStatus !==1 ? 'red' : "green" , fontSize:20}}> {showModal.operaionStatus === 1 ? <FaCheck  size={40}  className='mb-1' /> : <BiError  size={40}  className='mb-1' />}  <br />  {showModal.title}  <br />  {showModal.error}</Modal.Body>
         </Modal>
 
       </div>
 
+      <div tabIndex={-1} ref={errorDivRef} className={` mt-4 feedback-container   d-flex flex-row justify-content-center align-items-center ${showRatingError ? ' animate__animated animate__heartBeat' : '' } ${(rating === 0 && showRatingError) && 'opinion'} `}  >
+        <OpinionComponent rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
+      </div>
 
-      <div className=' mt-4 feedback-container d-flex flex-row justify-content-center align-items-center' >
-      <OpinionComponent rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
-        </div>
+      {loading && <LoadingComponent />} 
+
+
     </Container>
   );
 };

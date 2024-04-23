@@ -1,34 +1,41 @@
-
 .rating-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 19px;
 }
+
 .rating-icons {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .rating-icons span {
-    margin: 0 10px;
-  }
-  .rating-icons span  svg:hover {
-    color: #E4AA3A;
-  }
-  
+  display: flex;
+  justify-content: center;
+}
+
+.rating-icons span {
+  margin: 0 10px;
+}
+
+.rating-icons span svg:hover {
+  color: #E4AA3A;
+}
+
+.icon {
+  font-size: 3rem; /* Default size for larger screens */
+  cursor: pointer;
+  color: gray; /* Change the color of the active icon */
+}
+
+.rating-response {
+  text-align: center;
+}
+
+.active {
+  color: #E4AA3A;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
   .icon {
-    font-size: 3rem;
-    cursor: pointer;
-    color: gray; /* Change the color of the active icon */
+      font-size: 2rem; /* Adjust size for smaller screens */
   }
-  .rating-response{
-    text-align: center;
-  }
-  .active {
-    color: #E4AA3A;
-  }
-  
+}

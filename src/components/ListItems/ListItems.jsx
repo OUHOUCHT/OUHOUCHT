@@ -1,14 +1,12 @@
 import { useState } from "react";
-import LoadingBar from "../LoadingBar";
 import { FaInfoCircle, FaQrcode } from "react-icons/fa";
 import { Button, Card, Col, Modal, Row, Spinner } from "react-bootstrap";
-import { IoMdDownload } from "react-icons/io";
 import './ListItems.css'
 import { AiOutlineZoomIn } from "react-icons/ai";
 import FullscreenImage from "../FullscreenImage/FullscreenImage";
 import { MdZoomOutMap } from "react-icons/md";
 
-const ListItems = ({loading ,articles,isPhotos}) => {
+const ListItems = ({ articles,type}) => {
 
     const [imageLoaded, setImageLoaded] = useState(false);
     const [selectedArticle, setSelectedArticle] = useState(null);
@@ -54,12 +52,9 @@ const ListItems = ({loading ,articles,isPhotos}) => {
     };
 
 
-    console.log(isPhotos ? 'oui' : "non")
 
 
-    if (loading) {
-        return  <LoadingBar />
-      }
+
     
 
       return (
@@ -69,7 +64,7 @@ const ListItems = ({loading ,articles,isPhotos}) => {
           <Col style={{ display: 'flex', justifyContent:'start',alignItems: 'center',}}>
             <FaInfoCircle size={24} style={{ marginLeft: '8px' }} color='gray' />
             <p style={{ margin: 0 }}>
-              عذرا لم يتم العثور على أي صورة يرجى المحاولة مرة أخرى.
+              عذرا لم يتم العثور على أي {type} يرجى المحاولة مرة أخرى.
             </p>
           </Col>
           </Row>
@@ -95,7 +90,7 @@ const ListItems = ({loading ,articles,isPhotos}) => {
                   onLoad={handleImageLoad} 
                   loading="lazy"  
                   decoding="async"
-                  onClick={() => openFullscreenImage(article.baseUrl)}
+                //  onClick={() => openFullscreenImage(article.baseUrl)}
                   
                   /> 
 

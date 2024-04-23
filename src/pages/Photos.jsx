@@ -10,6 +10,7 @@ const AUTH_ENDPOINT = 'https://accounts.google.com/o/oauth2/auth';
 const TOKEN_ENDPOINT = 'https://oauth2.googleapis.com/token';
 const SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly';
 import { PiGooglePhotosLogo } from "react-icons/pi";
+import LoadingBar from '../components/LoadingBar';
 
 const Photos = () => {
 
@@ -28,8 +29,6 @@ const Photos = () => {
     const fetchData = async () => {
       try {
 
-
-
         let accessToken = sessionStorage.getItem('access_token');
         if (!accessToken) {
 
@@ -45,7 +44,6 @@ const Photos = () => {
           sessionStorage.setItem('expires_at', expiresAt);
         } else {
           const expiresAt = sessionStorage.getItem('expires_at');
-          console.log(expiresAt,Date.now())
           if (Date.now() >= expiresAt) {
             sessionStorage.clear()
             getAccessToken();
@@ -166,28 +164,38 @@ const Photos = () => {
   };
   
 
-
   useEffect(() => {
     // Send pageview with a custom path
     ReactGA.send({ hitType: 'pageview', page: window.location.pathname ,title : "البوم الصور"});
 }, [])
 
 
-  return (
-        <div className="container-content" >
-        <TitleSection    title_ar="مشاركة البرلمان في  المعرض الدولي للنشر والكتاب: لحظات  تاريخية" title_amz="ⴰⴳⵍⴰⴷⴰ ⵜⴰⵔⵢⴰⵏⵉⵏ ⴷ ⴱⵔⵍⵎⴰⵏ ⴻⴷ ⵜⴰⵡⵔⵉⵜ ⵉⵍⵍⴰⵎⵏ ⵜⴰⵔⵢⴰⵏⵉⵏ: ⵉⵎⵔⴰⵍⵜ ⵜⴰⵔⵢⴰⵏⵉⵏ."/>
-        <TitleSection  Icon_1={<PiGooglePhotosLogo  size={45} />} />
+return (
+  <div className="container-content">
+    <TitleSection
+      title_ar="مشاركة البرلمان في المعرض الدولي للنشر والكتاب: لحظات تاريخية"
+      title_amz="ⴰⴳⵍⴰⴷⴰ ⵜⴰⵔⵢⴰⵏⵉⵏ ⴷ ⴱⵔⵍⵎⴰⵏ ⴻⴷ ⵜⴰⵡⵔⵉⵜ ⵉⵍⵍⴰⵎⵏ ⵜⴰⵔⵢⴰⵏⵉⵏ: ⵉⵎⵔⴰⵍⵜ ⵜⴰⵔⵢⴰⵏⵉⵏ."
+    />
+    <TitleSection Icon_1={<PiGooglePhotosLogo size={45} />} />
 
-        <ListPhotos loading={loading} photos={currentPhotos}  />
-
+    {loading ? (
+      <LoadingBar/>
+    ) : error ? (
+      <div>{error}</div>
+    ) : (
+      <>
+        <ListPhotos photos={currentPhotos} />
         <Pagination
-        loading={loading}
-        currentPage={currentPage}
-        totalPages={Math.ceil(( filteredPhotos.length) / photosPerPage)}
-        onPageChange={handlePageChange}
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredPhotos.length / photosPerPage)}
+          onPageChange={handlePageChange}
         />
-    </div>
-  );
-};
+      </>
+    )}
+  </div>
+);
+
+}
+  
 
 export default Photos;

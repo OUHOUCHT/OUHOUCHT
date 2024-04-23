@@ -30,12 +30,16 @@
 
 
 .awesome-button {
-  width: 40%;
+  width: 30%;
   background-color: gray;
   border-color: gray;
   color: #fff;
+  font-size: 16px;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+}
+.awesome-button span svg{
+  font-size: 22px;
 }
 
 .awesome-button:hover {
@@ -69,4 +73,22 @@
   font-size: 15px;
   padding: 1rem;
   font-weight: bold;
+}
+
+
+.opinion{
+  border: 1px solid  red;
+}
+
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .awesome-button {
+      font-size: 14px; /* Adjust font size for smaller screens */
+  }
+
+  .awesome-button span svg{
+    font-size: 18px;
+    display: none;
+  }
 }

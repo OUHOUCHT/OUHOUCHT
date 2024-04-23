@@ -9,10 +9,11 @@ import './ListPhotos.css'
 
 import FullscreenImage from "../FullscreenImage/FullscreenImage";
 
-const ListPhotos = ({loading ,photos,isPhotos}) => {
+const ListPhotos = ({ photos}) => {
 
     const [imageLoaded, setImageLoaded] = useState(false);
     const [fullscreenImage, setFullscreenImage] = useState(null);
+    const [loadedImages, setLoadedImages] = useState({});
 
     const openFullscreenImage = (imageUrl) => {
         setFullscreenImage(imageUrl);
@@ -27,19 +28,18 @@ const ListPhotos = ({loading ,photos,isPhotos}) => {
       setImageLoaded(true);
     };
 
+
+
+
     const formatDate = (dateString) => {
       const date = new Date(dateString);
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
       return new Intl.DateTimeFormat('ar', options).format(date);
     };
 
-    if (loading) {
-        return  <LoadingBar />
-      }
-    
+    console.log(photos)
 
-      console.log("list photo " , photos)
-      
+
       return (
         <div  id='ListPhotos' className='my-5'>
           { (photos.length === 0 || (photos.length !== 0 && photos[0]?.id == undefined )) ?   
@@ -65,9 +65,7 @@ const ListPhotos = ({loading ,photos,isPhotos}) => {
                       src={photo.baseUrl} 
                       alt={photo.filename} 
                       onLoad={handleImageLoad} 
-                      loading="lazy"  
-                      decoding="async"
-                      onClick={() => openFullscreenImage(photo.baseUrl)}
+                    //  onClick={() => openFullscreenImage(photo.baseUrl)}
                       /> 
 
                       <div className="middle">

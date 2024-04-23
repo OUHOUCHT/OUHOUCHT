@@ -9,7 +9,7 @@ import Docs from './pages/Docs.jsx';
 import NotFound from './pages/NotFound.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import Template from './pages/Template.jsx';
+import Template from './pages/Template/Template.jsx';
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
 import TermsOfService from './components/TermsOfService.jsx';
@@ -55,7 +55,7 @@ function App() {
           path :"/",
           element : <Home/>
         } ,
-
+        
         {
           path: "/album",
           element: <Album />,
@@ -98,12 +98,12 @@ function App() {
       ,
       
     },
-/*
+
    {
       path :"/home",
       element : <Template/>
     } 
-    */
+    
   
   ],
   { basename: '/parlement' } // Specify the base path here
