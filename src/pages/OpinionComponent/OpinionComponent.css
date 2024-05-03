@@ -25,25 +25,25 @@
   color: #E4AA3A;
 }
 
-.icon {
+.rating-content .icon {
   font-size: 3.5rem; /* Default size for larger screens */
   cursor: pointer;
   color: gray; /* Change the color of the active icon */
   margin-top: 10px;
 }
 
-.active {
+.rating-content .active {
   color: #E4AA3A;
   font-weight: bold;
 
 }
-.active svg {
+.rating-content .active svg {
   border: 2px solid green;
   color: blue;
 
 }
 
-.text-danger{
+.rating-content .text-danger{
   font-size: 15px;
   font-weight: bold;
 }
