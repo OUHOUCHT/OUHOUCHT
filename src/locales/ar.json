@@ -1,0 +1,56 @@
+{
+    "feedback": {
+
+        "form_label_name": "الاسم والنسب",
+        "placeholder_name": "ادخل الاسم والنسب",
+        "error_name_required": "* الاسم والنسب مطلوب ",
+    
+        "form_label_phone": "رقم الهاتف",
+        "placeholder_phone": "ادخل رقم الهاتف",
+        "error_phone_required": "*  رقم الهاتف مطلوب",
+    
+        "form_label_email": "البريد الالكتروني",
+        "placeholder_email": "ادخل البريد الالكتروني",
+        "error_email_required": "*  البريد الالكتروني مطلوب",
+    
+        "form_label_list": "نوع الهيئة",
+        "error_list_required": "*نوع الهيئة مطلوبة ",
+        
+        "form_label_list_name": "اسم الهيئة ",
+        "placeholder_list_name": "ادخل اسم الهيئة",
+        "error_list_name_required": "*  اسم الهيئة مطلوب",
+    
+
+        "form_label_opinion": "ارتسامتك",
+        "placeholder_opinion": "أكتب ارتسامتك هنا",
+        "error_opinion_required": "*  ارتسامتك مطلوبة",
+        "button_save" : "إرسال",
+        "listValue" : {
+        "default" : "اختر نوع الهيئة...",
+        "option1" : "مؤسسة دستورية",
+        "option2" :"ادارة",
+        "option3" :"مؤسسة تعليمية",
+        "option4" :"جمعية",
+        "option5" :"زائر",
+        "option6" :"أخر"
+        },
+      "question": "ما هو رأيك الشخصي بخصوص رواق البرلمان في المعرض الدولي للنشر والكتاب؟",
+      "tooltip": {
+        "very_bad": "سيء جداً",
+        "bad": "سيء",
+        "acceptable": "مقبول",
+        "good": "جيد",
+        "excellent": "ممتاز",
+        "abstain": "الإمتناع",
+        "text_danger" : "*  يرجى تقييم جناح رواق البرلمان"
+
+      },
+      "modal": {
+        "success_title": "تمت العملية بنجاح",
+        "error_title": "تعذر إكمال العملية"
+      },
+      "title_ar": "الدفتر الذهبي الإلكتروني",
+      "title_amz": "ⴰⵍⵓⴳ ⴰⵍⵉⴽⵟⵕⵓⵏⵉ ⵏ ⵡⵓⵔⵖ"
+    }
+  }
+  

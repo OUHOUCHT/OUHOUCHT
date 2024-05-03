@@ -71,10 +71,34 @@ line-height: 1.5;
 }
 
 
-/* className="font-size-device" */
+.modal-not-loaded {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+ .modal-loaded {
+  visibility: visible;
+  height: 160px; 
+  max-width: 40%;
+  max-height: 40vh;
+}
+
+
+
 /* Media query for mobile screens */
 @media (max-width: 769px) {
 
+
+  .modal-content {
+    width: 70%;
+    margin:  0 auto;
+  }
+
+  .modal-loaded {
+    height: 100px; 
+    max-width: 30%;
+  }
  
   .title-size-device  h2  {
     font-size: 18px;

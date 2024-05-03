@@ -3,10 +3,7 @@ import { createBrowserRouter , Outlet ,RouterProvider } from 'react-router-dom';
 import Header from './components/Header/Header.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import Container from './components/Container/Container.jsx';
-import Home from './pages/Home.jsx';
-import Album from './pages/Album.jsx';
-import Docs from './pages/Docs.jsx';
-import NotFound from './pages/NotFound.jsx';
+import NotFound from './pages/NotFound/NotFound.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Template from './pages/Template/Template.jsx';
@@ -14,11 +11,17 @@ import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
 import TermsOfService from './components/TermsOfService.jsx';
 import PrivacyPolicy from './components/PrivacyPolicy.jsx';
-import Photos from './pages/Photos.jsx';
+import Photos from './pages/Photos/Photos.jsx';
 import Book from './pages/Feedback/Feedback.jsx';
 import Feedback from './pages/Feedback/Feedback.jsx';
 import OpinionComponent from './pages/OpinionComponent/OpinionComponent.jsx';
+import Docs from './pages/Docs/Docs.jsx';
+import Home from './pages/Home/Home.jsx';
+import "flag-icons/css/flag-icons.min.css";
+import { I18nextProvider } from 'react-i18next';
+import i18n from './translation/i18n.jsx'; // Import your i18n configuration
 
+import Album from './pages/Album/Album.jsx';
 
 function App() {
   
@@ -98,12 +101,12 @@ function App() {
       ,
       
     },
-
+/*
    {
       path :"/home",
       element : <Template/>
     } 
-    
+    */
   
   ],
   { basename: '/parlement' } // Specify the base path here
@@ -112,9 +115,11 @@ function App() {
 
   
   return (
+    <I18nextProvider i18n={i18n}>
       <div  className='App' >
          <RouterProvider router={router} />
     </div>
+    </I18nextProvider>
 
   )
 }

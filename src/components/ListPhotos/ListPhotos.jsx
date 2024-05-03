@@ -75,6 +75,9 @@ const ListPhotos = ({ photos}) => {
 
 
 
+
+
+
 { /*
                 <Card.Body   className='card-body py-3 d-flex flex-column justify-content-between '>
                 <div  className=' d-flex flex-row justify-content-center'>

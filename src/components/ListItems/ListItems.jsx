@@ -81,8 +81,7 @@ const ListItems = ({ articles,type}) => {
                     </div>
                     )}
               <div className="content-card">
-                  <Card.Img 
-                  
+                  <Card.Img  
                   className={`  animate__animated animate__zoomIn  ${imageLoaded ? 'image-loaded' : 'image-not-loaded'}`}
                   variant="top" 
                   src={article.baseUrl} 
@@ -102,7 +101,7 @@ const ListItems = ({ articles,type}) => {
 
                 <Card.Body   className='card-body d-flex flex-column justify-content-between '>
 
-                <Card.Title className="pulse"><i style={{color:'gray'}} class="fa fa-star  fa-xs"></i> {article.filename} <i style={{color:'gray'}} class="fa fa-star  fa-xs"></i></Card.Title>
+                <Card.Title className="pulse"><i style={{color:'gray'}} className="fa fa-star  fa-xs"></i> {article.filename} <i style={{color:'gray'}} className="fa fa-star  fa-xs"></i></Card.Title>
 
                 <div  className=' d-flex flex-row justify-content-center'>
                     {/*   href={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(article.url)}`} */}
@@ -115,11 +114,16 @@ const ListItems = ({ articles,type}) => {
                         onClick={() => toggleModal(article)}
                         >
                         <FaQrcode size={18} />
-                        </Button>
+                    </Button>
 
+                      {/*   <Button  size='sm'  rel="noopener noreferrer" className="animate__animated animate__heartBeat mx-1"  variant="primary" href={article.baseUrl} target='_blank'>
+                        <AiOutlineZoomIn size={18} />
+                        </Button> */}
 
-                        <Button  size='sm'  rel="noopener noreferrer" className="animate__animated animate__heartBeat mx-1"  variant="primary" href={article.baseUrl} target='_blank'>
-                        <AiOutlineZoomIn size={18} /></Button>
+                      <Button  size='sm'   className="animate__animated animate__heartBeat mx-1"  variant="primary" onClick={() => openFullscreenImage(article.baseUrl)}>
+                        <AiOutlineZoomIn size={18} />
+                      </Button> 
+                               
                     
                 </div>
 
@@ -136,7 +140,7 @@ const ListItems = ({ articles,type}) => {
 }
 
 {selectedArticle && (
-        <Modal show={true} onHide={closeModal} centered  >
+        <Modal show={true} onHide={closeModal} centered  className="modal" >
           <Modal.Header closeButton>
             <Modal.Title style={{ fontSize: '14px' }}>QR Code</Modal.Title>
           </Modal.Header>

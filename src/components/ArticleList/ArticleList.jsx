@@ -142,7 +142,7 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
 
  {/**
   *                <div className='image-container'>
-                <div class="text">
+                <div className="text">
 
 </div>
 </div>

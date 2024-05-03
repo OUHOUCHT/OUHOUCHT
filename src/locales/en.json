@@ -1,0 +1,62 @@
+{
+
+
+
+    "feedback": {
+    "form_label_name": "Full Name",
+    "placeholder_name": "Enter your full name",
+    "error_name_required": "* Full name is required",
+
+    "form_label_phone": "Phone Number",
+    "placeholder_phone": "Enter your phone number",
+    "error_phone_required": "* Phone number is required",
+
+    "form_label_email": "Email",
+    "placeholder_email": "Enter your email",
+    "error_email_required": "* Email is required",
+
+    "form_label_list": "Authority type",
+    "error_list_required": "* Authority type is required",
+
+    "form_label_list_name": "Authority name ",
+    "placeholder_list_name": "Enter your Authority name",
+    "error_list_name_required": "* Authority name is required ",
+
+
+    "form_label_opinion": "Tell us your opinion",
+    "placeholder_opinion": "Write your opinion here",
+    "error_opinion_required": "*  your opinion is required",
+
+    "listValue" : {
+        "default" : "Select Authority type...",
+        "option1" : "Constitutional institution",
+        "option2" :"administration",
+        "option3" :"Educational institution",
+        "option4" :"Association",
+        "option5" :"Visitor",
+        "option6" :"Other"
+        }
+    ,
+    "button_save" : "Send",
+
+      "question": "What is your personal opinion regarding the Parliament Pavilion at the International Book Fair?",
+      "tooltip": {
+        "very_bad": "Very Bad",
+        "bad": "Bad",
+        "acceptable": "Acceptable",
+        "good": "Good",
+        "excellent": "Excellent",
+        "abstain": "Abstain",
+        "text_danger" : "Please evaluate the Parliament Hall Wing *"
+
+      },
+      "modal": {
+        "success_title": "Operation Successful",
+        "error_title": "Operation Failed"
+      },
+      "title_ar": "Electronic Golden Notebook",
+      "title_amz": "" 
+
+    }
+  }
+  

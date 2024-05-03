@@ -26,10 +26,20 @@
 }
 
 .fullscreen-image-content img {
-    width:  700px;
+
+    width: 700px;
     height: 600px;
+    object-fit: contain; /* or 'cover', 'fill', etc. based on your preference */
+
 }
 
+@media screen and (max-width: 768px) {
+    .fullscreen-image-content img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* or 'cover', 'fill', etc. based on your preference */
+    }
+}
 
 .close-button {
     position: absolute;

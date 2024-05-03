@@ -67,11 +67,9 @@
   }
 
 
-  
-
  #ListPhotos .loading-spinner-container {
-    height: 280px; 
-  }
+  height:450px;
+}
 
   #ListPhotos .image-not-loaded {
     visibility: hidden;
@@ -83,19 +81,6 @@
   }
 
 
-
- .modal-not-loaded {
-  visibility: hidden;
-  height: 0;
-  width: 0;
-}
-
- .modal-loaded {
-  visibility: visible;
-  height: 160px; 
-  max-width: 40%;
-  max-height: 40vh;
-}
 
 
 

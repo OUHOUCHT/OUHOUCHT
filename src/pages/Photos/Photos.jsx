@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TitleSection from '../components/TitleSection/TitleSection';
-import Pagination from '../components/Pagination/Pagination';
-import ListPhotos from '../components/ListPhotos/ListPhotos';
+import TitleSection from '../../components/TitleSection/TitleSection';
+import Pagination from '../../components/Pagination/Pagination';
+import ListPhotos from '../../components/ListPhotos/ListPhotos';
 import ReactGA from 'react-ga4';
 
 const CLIENT_ID = '3959137731-32skmad4s3k5b899v8cgqjbmot4gj801.apps.googleusercontent.com';
@@ -10,7 +10,7 @@ const AUTH_ENDPOINT = 'https://accounts.google.com/o/oauth2/auth';
 const TOKEN_ENDPOINT = 'https://oauth2.googleapis.com/token';
 const SCOPE = 'https://www.googleapis.com/auth/photoslibrary.readonly';
 import { PiGooglePhotosLogo } from "react-icons/pi";
-import LoadingBar from '../components/LoadingBar';
+import LoadingBar from '../../components/LoadingBar';
 
 const Photos = () => {
 

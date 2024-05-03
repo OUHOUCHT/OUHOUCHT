@@ -8,19 +8,22 @@ import { BiError } from "react-icons/bi";
 import { FaCheck } from "react-icons/fa";
 import { BsSendCheck } from "react-icons/bs";
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
+import { useTranslation } from 'react-i18next';
 
 const Feedback = () => {
+  const { t ,i18n} = useTranslation(); // Access translation functions
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phoneNumber: '',
     listValue: '',
-    textAreaValue: ''
+    textAreaValue: '',
+    nameTextAreaValue :''
   });
 
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(0);
-  const [showRatingError, setShowRatingError] = useState(false);
   const errorDivRef = useRef(null);
 
   const [showModal, setShowModal] = useState({
@@ -31,10 +34,7 @@ const Feedback = () => {
   });
 
   const handleCloseModal = () => {
-    setShowModal( prev =>  ({
-      ...prev,
-      open : false
-    }));
+    setShowModal(prev => ({ ...prev, open: false }));
   };
 
   const handleRatingChange = (value) => {
@@ -43,177 +43,186 @@ const Feedback = () => {
 
   const renderTooltip = (rating) => {
     switch (rating) {
-
       case 1:
-        return "سيء جداً";
+        return t('feedback.tooltip.very_bad');
       case 2:
-        return "سيء";
+        return t('feedback.tooltip.bad');
       case 3:
-        return "مقبول";
+        return t('feedback.tooltip.acceptable');
       case 4:
-        return "جيد";
+        return t('feedback.tooltip.good');
       case 5:
-        return "ممتاز";
+        return t('feedback.tooltip.excellent');
       default:
         return "";
     }
   };
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const sendFeedback = async (form, data) => {
+    try {
+      setLoading(true);
+
+      const response = await fetch('https://ebureau.chambredesconseillers.ma/sielcc/api.php?endpoint=sendFeedBack', {
+        method: 'POST',
+        headers: {
+          'Api-Key': '6c92e935dc096ab028081a1262e927cf3c10f6df8ccf247ba65821ca052a29ab',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      setLoading(false);
+
+      if (result.error) {
+        setShowModal(prev => ({
+          ...prev,
+          open: true,
+          title: t('feedback.modal.error_title'),
+          error: result.error,
+          operaionStatus: 2
+        }));
+        return;
+      }
+
+      setShowModal(prev => ({
+        ...prev,
+        error: "",
+        open: true,
+        title: t('feedback.modal.success_title'),
+        operaionStatus: 1
+      }));
+
+      form.reset();
+      setFormData({
+        name: '',
+        email: '',
+        phoneNumber: '',
+        listValue: '',
+        textAreaValue: '',
+        nameTextAreaValue:''
+      });
+      setRating(0);
+
+    } catch (error) {
+      console.error(error);
+
+      setLoading(false);
+
+      setShowModal(prev => ({
+        ...prev,
+        open: true,
+        title: t('feedback.modal.error_title'),
+        error: error.message,
+        operaionStatus: 2
+      }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const form = e.currentTarget;
 
-    if (form.checkValidity() ) {
-
-      if(rating !== 0){
-        // Do something with form data, like submit it to a server
-        const data = {...formData, rating : rating ===0 ? 'الإمتناع' : renderTooltip(rating) }
-
-        setLoading(true);
-
-        const sendFeedBack = async () => {
-          try {
-
-          const response = await fetch('https://ebureau.chambredesconseillers.ma/sielcc/api.php?endpoint=sendFeedBack', {
-              method: 'POST', 
-              headers: {
-                'Api-Key': '6c92e935dc096ab028081a1262e927cf3c10f6df8ccf247ba65821ca052a29ab',
-                'Content-Type': 'application/json', 
-              },
-              body: JSON.stringify(data), // Convert data object to JSON string
-            });
-
-            const result = await response.json();
-            setLoading(false);
-
-            if (result.error) {
-              setShowModal( () => ({
-                open: true,
-                title :"تعذر إكمال العملية ",
-                error :  result.error,
-                operaionStatus: 2
-
-              }));
-              return
-            }
-
-            setShowModal( () => ({
-              error : "",
-              open: true,
-              title :"تمت العملية بنجاح",
-              operaionStatus : 1
-            }));
-
-            // Reset the form after successful submission
-            form.reset();
-            setFormData({
-              name: '',
-              email: '',
-              phoneNumber: '',
-              listValue: '',
-              textAreaValue: ''
-            });
-            setRating(0);
-
-          } catch (result) {
-
-            setLoading(false);
-
-            setShowModal( () => ({
-              open: true,
-              title :"تعذر إكمال العملية ",
-              error :  result.error,
-              operaionStatus: 2
-            }));
-
-          } 
-        };
-
-        sendFeedBack()
-        setShowRatingError(false)
-
-
-      }else{
-
-      setShowRatingError(true);
-
+    if (form.checkValidity()) {
+      if (rating === 0) {
+        errorDivRef.current.focus();
+        errorDivRef.current.classList.add('animate__heartBeat');
+        setTimeout(() => {
+          errorDivRef.current.classList.remove('animate__heartBeat');
+        }, 1000);
+      } else {
+        const data = { ...formData, rating: rating === 0 ? t('feedback.tooltip.abstain') : renderTooltip(rating) };
+        sendFeedback(form, data);
       }
-      
     } else {
-      e.stopPropagation(); // Prevent default submission if form is invalid
-      // Show error message animation when rating is 0
-      setShowRatingError(true);
+      e.stopPropagation();
     }
   };
 
+  const handleLanguage = (code) => {
 
+    console.log()
+    i18n.changeLanguage(code);
 
-  useEffect(() => {
-    if (showRatingError && errorDivRef.current) {
-      errorDivRef.current.focus();
-    }
-  }, [showRatingError]);
-
+  };
 
   return (
-    <Container className="container-content">
-      <TitleSection Icon_1={<MdStarPurple500  color='#E4AA3A' />} title_ar="الدفتر الذهبي الإلكتروني" title_amz="ⴰⴷⴼⵔⴽ ⴰⵎⵓⴷⴷⴰⵡⵉ ⵏ ⵜⴰⵢⵏⵏⴰⵏ ⵜⵓⵜⵓⵔⵓⵏⵉ" />
-      <div className=' mt-4 feedback-container d-flex flex-row justify-content-center align-items-center' >
-        <Form onSubmit={handleSubmit}>
-        <h4 className='text-center'>أخبرنا برأيك ؟</h4>
-        <div  className="text-right mt-3">
-            {rating === 0 && <div><Form.Text className="text-danger"> * يرجى إبداء رأيك بخصوص رواق البرلمان  </Form.Text></div>}
-          </div>
-          <Form.Group className="my-2" as={Row} controlId="formFirstNameLastName">
-            <Form.Label>الاسم والنسب</Form.Label>
+    <Container className="container-content" style={{textAlign:i18n.language !== "ar" ? 'left' :"right"}} lang={i18n.language} dir={ i18n.language === "ar" ? "rtl" : "ltr"}>
+      <TitleSection Icon_1={<MdStarPurple500 color='#E4AA3A' />} title_ar={t('feedback.title_ar')} title_amz={t('feedback.title_amz')} />
+
+      {/* Language selection icons */}
+      <Row className='flags'>
+        <span onClick={() => { handleLanguage('ar') }} className=" fi fi-ma "></span>
+        <span onClick={() => { handleLanguage('es') }} className=" fi fi-es "></span>
+        <span onClick={() => { handleLanguage('fr') }} className=" fi fi-fr "></span>
+        <span onClick={() => { handleLanguage('en') }} className=" fi fi-gb "></span>
+      </Row>
+
+      <Form className='mt-4 feedback-container' onSubmit={handleSubmit}>
+        <Row>
+          <p className='rating-response'>{t('feedback.question')}</p>
+        </Row>
+
+        <Row tabIndex={-1} ref={errorDivRef} className='pb-3 animate__animated text-center'>
+          <OpinionComponent error={rating === 0} rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
+        </Row>
+
+        <Row> 
+            <Form.Group as={Row} controlId="formFirstNameLastName">
+            <Form.Label>{t('feedback.form_label_name')}</Form.Label>
             <Col sm={15}>
               <Form.Control
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder='ادخل الاسم والنسب '
+                placeholder={t('feedback.placeholder_name')}
                 className="custom-placeholder" // Apply custom CSS class
-                required
-                isInvalid={formData.name.trim() === ''}
+                //required
+                //isInvalid={formData.name.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
-              * الاسم والنسب مطلوب 
+              {t('feedback.error_name_required')}
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
 
+            </Row>
+            <Row>
+
           <Form.Group className="my-2" as={Row} controlId="formPhoneNumber">
-            <Form.Label>رقم الهاتف </Form.Label>
+          <Form.Label>{t('feedback.form_label_phone')}</Form.Label>
             <Col sm={15}>
               <Form.Control
                 type="text"
                 name="phoneNumber"
                 value={formData.phoneNumber}
-                placeholder='ادخل رقم الهاتف'
+                placeholder={t('feedback.placeholder_phone')}
                 className="custom-placeholder" // Apply custom CSS class
                 onChange={handleChange}
-                required
-                isInvalid={formData.phoneNumber.trim() === ''}
+                //required
+                //isInvalid={formData.phoneNumber.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
-              *  رقم الهاتف مطلوب
+              {t('feedback.error_phone_required')}
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
+          </Row>
+
+          <Row>
 
           <Form.Group className="my-2" as={Row} controlId="formEmail">
-            <Form.Label>البريد الالكتروني</Form.Label>
+          <Form.Label>{t('feedback.form_label_email')}</Form.Label>
             <Col sm={15}>
               <Form.Control
-                placeholder='ادخل البريد الالكتروني'
+                placeholder={t('feedback.placeholder_email')}
                 className="custom-placeholder" // Apply custom CSS class
                 type="email"
                 name="email"
@@ -223,13 +232,16 @@ const Feedback = () => {
                 isInvalid={formData.email.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
-              *  البريد الالكتروني مطلوب
+              {t('feedback.error_email_required')}
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
+          </Row>
+
+          <Row>
 
           <Form.Group className="my-2" controlId="formList">
-            <Form.Label>الهيئة </Form.Label>
+          <Form.Label>{t('feedback.form_label_list')}</Form.Label>
             <Col sm={15}>
               <Form.Control
                 as="select"
@@ -237,40 +249,70 @@ const Feedback = () => {
                 value={formData.listValue}
                 onChange={handleChange}
                 className="custom-select" // Apply custom CSS class
-                required
-                isInvalid={formData.listValue.trim() === ''}
+               // required
+               // isInvalid={formData.listValue.trim() === ''}
               >
-                <option value="">اختر الهيئة... </option>
-                <option value="option1">مؤسسة التعليم الابتدائي</option>
-                <option value="option2">مؤسسة التعليم الثانوي الإعدادي</option>
-                <option value="option3">مؤسسة التعليم الثانوي التأهيلي</option>
-
-                <option value="option3">مؤسسة جامعية</option>
-                <option value="option3">جمعية</option>
-                <option value="option3">زائر</option>
-                <option value="option3">أخر</option>
-
+                <option value="">{t('feedback.listValue.default')}</option>
+                <option value="مؤسسة دستورية">{t('feedback.listValue.option1')}</option>
+                <option value="ادارة">{t('feedback.listValue.option2')}</option>
+                <option value="مؤسسة تعليمية">{t('feedback.listValue.option3')}</option>
+                <option value="جمعية">{t('feedback.listValue.option4')}</option>
+                <option value="زائر">{t('feedback.listValue.option5')}</option>
+                <option value="أخر">{t('feedback.listValue.option6')}</option>
               </Form.Control>
               <Form.Control.Feedback type="invalid">
-              * الهيئة مطلوبة 
+              {t('feedback.error_list_required')}
               </Form.Control.Feedback>
             </Col>
           </Form.Group>
+          </Row>
+
+          <Row>
+          <Form.Group className="my-2" as={Row} controlId="FormNameList">
+          <Form.Label>{t('feedback.form_label_list_name')}</Form.Label>
+            <Col sm={15}>
+              <Form.Control
+                type="text"
+                name="nameTextAreaValue"
+                value={formData.nameTextAreaValue}
+                placeholder={t('feedback.placeholder_list_name')}
+                className="custom-placeholder" // Apply custom CSS class
+                onChange={handleChange}
+                required={formData.listValue.trim() !== ''}
+                isInvalid={formData.listValue.trim() !== ''}
+              />
+              <Form.Control.Feedback type="invalid">
+              {t('feedback.error_list_name_required')}
+              </Form.Control.Feedback>
+            </Col>
+          </Form.Group>
+          </Row>
+
+
+          <Row>
 
           <Form.Group className="my-2" controlId="formTextArea">
-            <Form.Label>أخبرنا برأيك ؟</Form.Label>
-            <Col sm={15}>
+          <Form.Label>{t('feedback.form_label_opinion')}</Form.Label>
+            <Col sm={11}>
               <Form.Control
                 as="textarea"
                 rows={3}
                 name="textAreaValue"
                 value={formData.textAreaValue}
                 onChange={handleChange}
-                placeholder='أكتب رأيك هنا'
+                placeholder={t('feedback.placeholder_opinion')}
                 className="custom-placeholder" // Apply custom CSS class
+                required
+                isInvalid={formData.textAreaValue.trim() === ''}
               />
+              <Form.Control.Feedback type="invalid">
+              {t('feedback.error_opinion_required')}
+              </Form.Control.Feedback>
+             
             </Col>
           </Form.Group>
+          </Row>
+          <Row>
 
           <Form.Group className="my-2 d-flex flex-row justify-content-center align-items-center text-center" controlId="formSubmitButton">
             <Button
@@ -279,28 +321,24 @@ const Feedback = () => {
               type="submit"
               variant='secondary'
             >
-              <span> <BsSendCheck  /> إرسال</span>
+              <span> <BsSendCheck  />  {t('feedback.button_save')} </span>
             </Button>
           </Form.Group>
-
-        </Form>
-
-        {/* Modal for success message */}
-          <Modal  style={{textAlign:'center'}} show={showModal.open} onHide={handleCloseModal}>
-          <Modal.Header closeButton   style={{textAlign:'right'}}  >
-          </Modal.Header>
-          <Modal.Body className='mb-2' style={{color: showModal.operaionStatus !==1 ? 'red' : "green" , fontSize:20}}> {showModal.operaionStatus === 1 ? <FaCheck  size={40}  className='mb-1' /> : <BiError  size={40}  className='mb-1' />}  <br />  {showModal.title}  <br />  {showModal.error}</Modal.Body>
-        </Modal>
-
-      </div>
-
-      <div tabIndex={-1} ref={errorDivRef} className={` mt-4 feedback-container   d-flex flex-row justify-content-center align-items-center ${showRatingError ? ' animate__animated animate__heartBeat' : '' } ${(rating === 0 && showRatingError) && 'opinion'} `}  >
-        <OpinionComponent rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
-      </div>
-
-      {loading && <LoadingComponent />} 
+          </Row>
 
 
+        </Form>      
+
+      {/* Modal for alert message */}
+      <Modal style={{ textAlign: 'center' }} show={showModal.open} onHide={handleCloseModal}>
+        <Modal.Header closeButton style={{ textAlign: 'right' }} />
+        <Modal.Body className='mb-2' style={{ color: showModal.operaionStatus !== 1 ? 'red' : "green", fontSize: 20 }}>
+          {showModal.operaionStatus === 1 ? <FaCheck size={40} className='mb-1' /> : <BiError size={40} className='mb-1' />}
+          <br />{showModal.title}<br />{showModal.error}
+        </Modal.Body>
+      </Modal>
+
+      {loading && <LoadingComponent />}
     </Container>
   );
 };

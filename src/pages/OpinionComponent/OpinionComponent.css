@@ -1,15 +1,21 @@
 .rating-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-size: 19px;
 }
 
-.rating-icons {
+
+.rating-icons{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 2rem;
 }
+
+.rating-icons p{
+  padding-top: 0.8rem;
+  font-size: 15px;
+}
+
 
 .rating-icons span {
   margin: 0 10px;
@@ -20,22 +26,37 @@
 }
 
 .icon {
-  font-size: 3rem; /* Default size for larger screens */
+  font-size: 3.5rem; /* Default size for larger screens */
   cursor: pointer;
   color: gray; /* Change the color of the active icon */
-}
-
-.rating-response {
-  text-align: center;
+  margin-top: 10px;
 }
 
 .active {
   color: #E4AA3A;
+  font-weight: bold;
+
 }
+.active svg {
+  border: 2px solid green;
+  color: blue;
+
+}
+
+.text-danger{
+  font-size: 15px;
+  font-weight: bold;
+}
+
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   .icon {
-      font-size: 2rem; /* Adjust size for smaller screens */
+      font-size: 2.5rem; /* Adjust size for smaller screens */
+  }
+
+  .rating-content .text-rating {
+    font-size: 14px;
+    
   }
 }

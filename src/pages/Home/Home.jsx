@@ -29,7 +29,7 @@ const Home = () => {
     <div className="container-content" id="home"  >
       <div className="title-size-device pub-title text-center animate__animated animate__fadeIn pb-5 py-4" >
         <h1 > إصدارات البرلمان</h1>
-        <h3> ⵜⵉⵥⵕⵉⴳⵉⵏ ⵏ ⵓⴱⵕⵍⴰⵎⴰⵏ</h3>
+        <h3>ⵜⵉⵥⵕⵉⴳⵉⵏ ⵏ ⵓⴱⵕⵍⴰⵎⴰⵏ</h3>
       </div>
 
       <Container >

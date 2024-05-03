@@ -11,8 +11,8 @@ const MediaSection = ({ handleShowModal }) => (
 
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <a href='' onClick={handleShowModal}>
-          <div class="button-border-2 button-border-medias animate__animated animate__zoomIn mt-2">
-            <h3><img class="icon-butt" src={left_arrow} alt="" /> وسائل التواصل الإجتماعي</h3>
+          <div className="button-border-2 button-border-medias animate__animated animate__zoomIn mt-2">
+            <h3><img className="icon-butt" src={left_arrow} alt="" /> وسائل التواصل الإجتماعي</h3>
           </div>
         </a>
       </div>

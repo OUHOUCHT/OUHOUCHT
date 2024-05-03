@@ -6,7 +6,7 @@ import { BiSolidVideos } from "react-icons/bi";
 import { IoHomeSharp } from "react-icons/io5";
 import { CgMediaLive } from "react-icons/cg";
 import { Link } from 'react-router-dom';
-import { MdInfoOutline } from "react-icons/md";
+import { MdInfoOutline, MdStarPurple500 } from "react-icons/md";
 import { GiBookshelf } from "react-icons/gi";
 import { Tb360View } from "react-icons/tb";
 import './Header.css'
@@ -56,11 +56,6 @@ const Header = () => {
            
             </NavDropdown> 
 
-            <Nav.Link as={Link} to="/photos" className="nav-link "  onClick={handleNavItemClick}>
-            <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;ألبوم الصور
-          </Nav.Link>
-
-
             <Nav.Link as={Link} to="/album" className="nav-link "  onClick={handleNavItemClick}>
             <IoMdPhotos className="mr-1" size={20} />&nbsp;&nbsp;معرض الصور
           </Nav.Link>
@@ -70,7 +65,7 @@ const Header = () => {
           </Nav.Link>
 
           <Nav.Link as={Link} to="/feedBack" className="nav-link " onClick={handleNavItemClick}>
-            <FaInfo className="mr-1"  size={20} />&nbsp;&nbsp;أخبرنا برأيك ؟  
+            <MdStarPurple500 className="mr-1"  size={25} />&nbsp;&nbsp; الدفتر الذهبي الإلكتروني  
           </Nav.Link>
 
  
