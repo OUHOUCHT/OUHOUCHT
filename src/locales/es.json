@@ -1,0 +1,57 @@
+{
+    "feedback": {
+
+        "form_label_name": "Nombre completo",
+        "placeholder_name": "Ingrese su nombre completo",
+        "error_name_required": "* El nombre completo es obligatorio",
+        
+      "form_label_phone": "Número de teléfono",
+      "placeholder_phone": "Ingrese su número de teléfono",
+      "error_phone_required": "* Se requiere el número de teléfono",
+  
+      "form_label_email": "Correo electrónico",
+      "placeholder_email": "Ingrese su correo electrónico",
+      "error_email_required": "* Se requiere el correo electrónico",
+  
+      "form_label_list": "Tipo de autoridad",
+      "error_list_required": "* Se requiere el tipo de autoridad",
+  
+      "form_label_list_name": "Nombre de la autoridad",
+      "placeholder_list_name": "Ingrese el nombre de la autoridad",
+      "error_list_name_required": "* Se requiere el nombre de la autoridad",
+  
+      "form_label_opinion": "Danos tu opinión",
+      "placeholder_opinion": "Escribe tu opinión aquí",
+      "error_opinion_required": "* Se requiere tu opinión",
+      
+      "button_save": "Enviar",
+      "listValue": {
+          "default": "Selecciona el tipo de autoridad...",
+          "option1": "Institución constitucional",
+          "option2": "Administración",
+          "option3": "Institución educativa",
+          "option4": "Asociación",
+          "option5": "Visitante",
+          "option6": "Otro"
+      },
+  
+      "question": "¿Cuál es tu opinión personal sobre el Pabellón del Parlamento en la Feria Internacional del Libro y la Edición ?",
+      "tooltip": {
+          "very_bad": "Muy malo",
+          "bad": "Malo",
+          "acceptable": "Aceptable",
+          "good": "Bueno",
+          "excellent": "Excelente",
+          "abstain": "Abstenerse",
+          "text_danger": "* Por favor evalúa el Pabellón del Parlamento"
+      },
+  
+      "modal": {
+          "success_title": "Operación exitosa",
+          "error_title": "Error al completar la operación"
+      },
+  
+      "title_ar": "Cuaderno Electrónico Dorado",
+      "title_amz": ""
+  }
+}

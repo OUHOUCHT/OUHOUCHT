@@ -4,6 +4,8 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslation from '../locales/en.json';
 import arTranslation from '../locales/ar.json';
+import frTranslation from '../locales/fr.json';
+import esTranslation from '../locales/es.json';
 
 i18n
   .use(initReactI18next)
@@ -14,6 +16,12 @@ i18n
       },
       ar: {
         translation: arTranslation,
+      },
+      fr: {
+        translation: frTranslation,
+      },
+      es: {
+        translation: esTranslation,
       },
     },
     lng: 'ar', // Set default language

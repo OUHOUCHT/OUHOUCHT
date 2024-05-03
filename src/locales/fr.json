@@ -1,0 +1,57 @@
+{
+  "feedback": {
+      "form_label_name": "Nom complet",
+      "placeholder_name": "Entrez votre nom complet",
+      "error_name_required": "* Le nom complet est requis",
+
+      "form_label_phone": "Numéro de téléphone",
+      "placeholder_phone": "Entrez votre numéro de téléphone",
+      "error_phone_required": "* Le numéro de téléphone est requis",
+
+      "form_label_email": "Email",
+      "placeholder_email": "Entrez votre email",
+      "error_email_required": "* L'email est requis",
+
+      "form_label_list": "Type d'autorité",
+      "error_list_required": "* Le type d'autorité est requis",
+
+      "form_label_list_name": "Nom de l'autorité",
+      "placeholder_list_name": "Entrez le nom de votre autorité",
+      "error_list_name_required": "* Le nom de l'autorité est requis",
+
+      "form_label_opinion": "Donnez-nous votre avis",
+      "placeholder_opinion": "Écrivez votre avis ici",
+      "error_opinion_required": "* Votre avis est requis",
+
+      "listValue": {
+          "default": "Sélectionnez le type d'autorité...",
+          "option1": "Institution constitutionnelle",
+          "option2": "Administration",
+          "option3": "Institution éducative",
+          "option4": "Association",
+          "option5": "Visiteur",
+          "option6": "Autre"
+      },
+
+      "button_save": "Envoyer",
+
+      "question": "Quel est votre avis personnel sur le pavillon du Parlement au Salon international de l'édition et du livre ?",
+      "tooltip": {
+          "very_bad": "Très mauvais",
+          "bad": "Mauvais",
+          "acceptable": "Acceptable",
+          "good": "Bon",
+          "excellent": "Excellent",
+          "abstain": "S'abstenir",
+          "text_danger": "Veuillez évaluer l'aile du Parlement *"
+      },
+
+      "modal": {
+          "success_title": "Opération réussie",
+          "error_title": "Échec de l'opération"
+      },
+
+      "title_ar": "Carnet d'or électronique",
+      "title_amz": ""
+  }
+}

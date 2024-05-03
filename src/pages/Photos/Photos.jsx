@@ -173,7 +173,7 @@ const Photos = () => {
 return (
   <div className="container-content">
     <TitleSection
-      title_ar="مشاركة البرلمان في المعرض الدولي للنشر والكتاب: لحظات تاريخية"
+      title_ar="ⵜⴰⴷⵔⴰⵡⵜ ⵏ ⵓⴱⵕⵍⴰⵎⴰⵏ ⴳ ⵓⵙⴼⵙⵔ ⴰⴳⵔⴰⵖⵍⴰⵏ ⵏ ⵜⵥⵕⵉⴳⵜ ⴷ ⵓⴷⵍⵉⵙ: ⵉⵣⵎⴰⵣ ⵉⵎⵣⵔⴰⵢⵏ"
       title_amz="ⴰⴳⵍⴰⴷⴰ ⵜⴰⵔⵢⴰⵏⵉⵏ ⴷ ⴱⵔⵍⵎⴰⵏ ⴻⴷ ⵜⴰⵡⵔⵉⵜ ⵉⵍⵍⴰⵎⵏ ⵜⴰⵔⵢⴰⵏⵉⵏ: ⵉⵎⵔⴰⵍⵜ ⵜⴰⵔⵢⴰⵏⵉⵏ."
     />
     <TitleSection Icon_1={<PiGooglePhotosLogo size={45} />} />

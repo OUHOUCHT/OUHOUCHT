@@ -54,18 +54,33 @@
   font-size: 19px;
 }
 
-
-.flags span{
-  margin-left: 10px;
-  font-size: 2rem;
+.flags-icons   {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-
-.flags span:hover{
-  font-size: 3rem;
+.flags-icons  img {
+  margin-left: 15px;
+  width: 40px;
+}
+.flags-icons img:hover{
   cursor: pointer;
-  color: red;
+  border-radius: 10px;
   animation: pulse 1s infinite alternate; /* Apply pulse baseUrl */
 };
+
+
+
+@keyframes pulse {
+  from {
+      transform: scale(1); /* Initial size */
+  }
+  to {
+      transform: scale(5); /* Scale up */
+  }
+}
+
+
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
@@ -76,6 +91,10 @@
   .awesome-button span svg{
     font-size: 18px;
     display: none;
+  }
+
+  .flags-icons  img {
+    width: 25px;
   }
 
   .rating-response {

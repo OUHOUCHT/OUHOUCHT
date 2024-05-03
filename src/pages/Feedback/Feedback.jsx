@@ -9,6 +9,10 @@ import { FaCheck } from "react-icons/fa";
 import { BsSendCheck } from "react-icons/bs";
 import LoadingComponent from '../../components/LoadingComponent/LoadingComponent';
 import { useTranslation } from 'react-i18next';
+import es  from  '../../assets/es.svg';
+import fr  from  '../../assets/fr.svg';
+import ma  from  '../../assets/ma.svg';
+import gb  from  '../../assets/gb.svg';
 
 const Feedback = () => {
   const { t ,i18n} = useTranslation(); // Access translation functions
@@ -157,19 +161,19 @@ const Feedback = () => {
       <TitleSection Icon_1={<MdStarPurple500 color='#E4AA3A' />} title_ar={t('feedback.title_ar')} title_amz={t('feedback.title_amz')} />
 
       {/* Language selection icons */}
-      <Row className='flags'>
-        <span onClick={() => { handleLanguage('ar') }} className=" fi fi-ma "></span>
-        <span onClick={() => { handleLanguage('es') }} className=" fi fi-es "></span>
-        <span onClick={() => { handleLanguage('fr') }} className=" fi fi-fr "></span>
-        <span onClick={() => { handleLanguage('en') }} className=" fi fi-gb "></span>
-      </Row>
+      <div className='flags-icons'  >
+        <img onClick={() => { handleLanguage('ar') }} src={ma}   alt="fi-ma"  />
+        <img onClick={() => { handleLanguage('es') }} src={es}   alt="fi-es" />
+        <img onClick={() => { handleLanguage('fr') }} src={fr}   alt="fi-fr" />
+        <img onClick={() => { handleLanguage('en') }} src={gb}  alt="fi-gb" />
+      </div>
 
       <Form className='mt-4 feedback-container' onSubmit={handleSubmit}>
         <Row>
           <p className='rating-response'>{t('feedback.question')}</p>
         </Row>
 
-        <Row tabIndex={-1} ref={errorDivRef} className='pb-3 animate__animated text-center'>
+        <Row dir='rtl' tabIndex={-1} ref={errorDivRef} className='pb-3  animate__animated text-center'>
           <OpinionComponent error={rating === 0} rating={rating} handleRatingChange={handleRatingChange} renderTooltip={renderTooltip} />
         </Row>
 
