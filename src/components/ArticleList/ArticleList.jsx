@@ -42,7 +42,6 @@ const ArticleList = ({ articles ,searchTerm  ,loading}) => {
 
 
   const handleModalImageLoad = () => {
-    console.log("setModalImageLoaded")
     setModalImageLoaded(true);
   };
 

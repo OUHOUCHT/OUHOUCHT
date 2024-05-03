@@ -47,7 +47,6 @@ const ListItems = ({ articles,type}) => {
   
   
     const handleModalImageLoad = () => {
-      console.log("setModalImageLoaded")
       setModalImageLoaded(true);
     };
 

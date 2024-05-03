@@ -37,7 +37,6 @@ const ListPhotos = ({ photos}) => {
       return new Intl.DateTimeFormat('ar', options).format(date);
     };
 
-    console.log(photos)
 
 
       return (

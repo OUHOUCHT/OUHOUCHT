@@ -9,8 +9,6 @@ import TitleSection from '../TitleSection/TitleSection';
 import ReactGA from 'react-ga4';
 import { BsArrowReturnLeft } from "react-icons/bs";
 import { BsArrowReturnRight } from "react-icons/bs";
-
-
 import './Container.css'
 
 const Container = () => {
@@ -61,7 +59,6 @@ const Container = () => {
 
         }
 
-        console.log(result)
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally{
@@ -100,9 +97,6 @@ const Container = () => {
       setSearchTerm(searchTerm);
     };
 
-
-
- 
 
 
   return (

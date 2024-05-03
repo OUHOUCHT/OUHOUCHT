@@ -151,7 +151,6 @@ const Feedback = () => {
 
   const handleLanguage = (code) => {
 
-    console.log()
     i18n.changeLanguage(code);
 
   };
