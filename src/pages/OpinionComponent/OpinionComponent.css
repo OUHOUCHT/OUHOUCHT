@@ -13,7 +13,7 @@
 
 .rating-icons p{
   padding-top: 0.8rem;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 
@@ -44,19 +44,28 @@
 }
 
 .rating-content .text-danger{
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
 }
 
 
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-  .icon {
-      font-size: 2.5rem; /* Adjust size for smaller screens */
+  .rating-content .icon {
+      font-size: 2.1rem; /* Adjust size for smaller screens */
   }
 
   .rating-content .text-rating {
-    font-size: 14px;
+    font-size: 12px;
     
   }
+  .rating-icons{
+    gap: 0.4rem;
+    
+  }
+
+  .rating-icons p{
+    font-size: 12.5px;
+  }
+  
 }

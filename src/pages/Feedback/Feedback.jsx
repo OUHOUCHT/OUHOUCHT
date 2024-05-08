@@ -130,7 +130,6 @@ const Feedback = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const form = e.currentTarget;
 
     if (form.checkValidity()) {
@@ -282,7 +281,7 @@ const Feedback = () => {
                 className="custom-placeholder" // Apply custom CSS class
                 onChange={handleChange}
                 required={formData.listValue.trim() !== ''}
-                isInvalid={formData.listValue.trim() !== ''}
+                isInvalid={formData.listValue.trim() !== '' && formData.nameTextAreaValue.trim() === ''}
               />
               <Form.Control.Feedback type="invalid">
               {t('feedback.error_list_name_required')}

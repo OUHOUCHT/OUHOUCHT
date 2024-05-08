@@ -58,6 +58,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 2.5rem;
 }
 .flags-icons  img {
   margin-left: 15px;
@@ -68,8 +69,6 @@
   border-radius: 10px;
   animation: pulse 1s infinite alternate; /* Apply pulse baseUrl */
 };
-
-
 
 @keyframes pulse {
   from {

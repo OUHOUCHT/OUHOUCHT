@@ -40,7 +40,7 @@
           "very_bad": "Très mauvais",
           "bad": "Mauvais",
           "acceptable": "Acceptable",
-          "good": "Bon",
+          "good": "bien",
           "excellent": "Excellent",
           "abstain": "S'abstenir",
           "text_danger": "Veuillez évaluer l'aile du Parlement *"
@@ -51,7 +51,7 @@
           "error_title": "Échec de l'opération"
       },
 
-      "title_ar": "Carnet d'or électronique",
+      "title_ar": "Livre d'or électronique",
       "title_amz": ""
   }
 }
